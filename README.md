@@ -16,4 +16,7 @@ Currently just has automatic random single class character generator.
 ## Combat Tracker
 Program designed track D&D combat, including initiative order, monster damage and abilities.
 It can also track health of monsters.
-Still a WIP 
+Still a WIP
+
+## Starfall Wish
+Simple program designed to simulate probabilities of homebrew item "Starfall Wish Ring"
