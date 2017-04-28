@@ -1,7 +1,6 @@
 # D&D Python Projects
 
 ## Character Creator
-
 ### Python Programs
 Programs that are meant to be run from the .py files
 
