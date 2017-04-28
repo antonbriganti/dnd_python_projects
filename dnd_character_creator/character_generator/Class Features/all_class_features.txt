@@ -1,0 +1,264 @@
+!  
+Barbarian
+Rage, Unarmored Defense
+Reckless Attack, Danger Sense
+Primal Path
+ASI
+Extra Attack, Fast Movement
+Path Feature
+Feral Instinct
+ASI
+Brutal Critical (1 Die)
+Path Feature
+Relentless Rage
+ASI
+Brutal Critical (2 Dice)
+Path Feature
+Persistent Rage
+ASI
+Brutal Critical (3 Dice)
+Indomitable Might
+ASI
+Primal Champion
+!
+Bard
+Spellcasting, Bardic Inspiration (d6)
+Jack of all Trades, Song of Rest (d6)
+Bard College, Expertise
+ASI
+Bardic Inspiration (d8), Font of Inspiration
+Countercharm, Bard College feature
+-
+ASI
+Song of Rest (d8)
+Bardic Inspiration (d10), Expertise, Magical Secrets
+-
+ASI
+Song of Rest (d10)
+Magical Secrets, Bard College feature
+Bardic Inspiration (d12)
+ASI
+Song of Rest (d12)
+Magical Secrets
+ASI
+Superior Inspiration
+!
+Cleric
+Spellcasting, Divine Domain
+Channel Divinity (1/rest), Divine Domain feature
+-
+ASI
+Destroy Undead (CR 1/2)
+Channel Divinity (2/rest), Divine Domain feature
+-
+ASI, Destroy Undead (CR 1), Divine Domain feature
+-
+Divine Intervention
+Destroy Undead (CR 2)
+ASI
+-
+Destroy Undead (CR 3)
+-
+ASI
+Destroy Undead (CR 4), Divine Domain feature
+Channel Divinity (3/rest)
+ASI
+Divine Intervention improvement
+!
+Druid
+Druidic, Spellcasting
+Wild Shape, Druid Circle
+-
+Wild Shape Improvement, ASI
+-
+Druid Circle feature
+-
+Wild Shape Improvement, ASI
+-
+Druid Circle Feature
+-
+ASI
+-
+Druid Circle Feature
+-
+ASI
+-
+Timeless Body, Beast Spells
+ASI
+Archdruid
+!
+Fighter
+Fighting Style, Second Wind
+Action Surge (one use)
+Martial Archetype
+ASI
+Extra Attack
+ASI
+Martial Archetype feature
+ASI
+Indomitable (one use)
+Martial Archetype feature
+Extra Attack (2)
+ASI
+Indomitable (two uses)
+ASI
+Martial Archetype feature
+ASI
+Action Surge (two uses), Indomitable (three uses)
+Martial Archetype feature
+ASI
+Extra Attack (3)
+!
+Monk
+Martial Arts (1d4), Unarmored Defense 
+Ki, Unarmored Movement (+10 ft)
+Monastic Tradition, Deflect Missiles
+ASI, Slow Fall
+Martial Arts (1d6), Extra Attack, Stunning Strike
+Unarmored Movement (+15 ft), Ki-Empowered Strikes, Monastic Tradition feature
+Evasion, Stillness of Mind
+ASI
+Unarmored Movement improvement
+Unarmored Movement (+20 ft), Purity of Body
+Martial Arts (1d8), Monastic Tradition feature
+ASI
+Tongue of the Sun and Moon
+Unarmored Movement (+25 ft), Diamond Soul
+Timeless Body
+ASI
+Martial Arts (1d10), Monastic Feature feature
+Unarmored Movement (+30 ft), Empty Body
+ASI
+Perfect Self
+!
+Paladin
+Divine Sense, Lay on Hands
+Fighting Style, Spellcasting, Divine Smite
+Divine Health, Sacred Health
+ASI
+Extra Attack
+Auto of Protection
+Sacred Oath feature
+ASI
+-
+Auto of Courage
+Improved Divine Smite
+ASI
+-
+Cleansing Touch
+Sacred Oath feature
+ASI
+-
+Aura Improvements
+ASI
+Sacred Oath
+!
+Ranger
+Favoured Enemy, Natural Explorer
+Fighting Style, Spellcasting
+Ranger Archetype, Primeval Awareness
+ASI
+Extra Attack
+Favoured Enemy and Natural Explorer improvements
+Ranger Archetype feature
+ASI, Land’s Stride
+-
+Natural Explorer improvement, Hide in Plain Sight
+Ranger Archetype feature
+ASI
+-
+Favoured Enemy improvement, Vanish
+Ranger Archetype feature
+ASI
+-
+Feral Senses
+ASI
+Foe Slayer
+!
+Rogue
+Sneak Attack (1d6), Expertise, Thieves’ Cant
+Cunning Action
+Sneak Attack (2d6), Roguish Archetype
+ASI
+Sneak Attack (3d6), Uncanny Dodge
+Expertise
+Sneak Attack (4d6), Evasion
+ASI
+Sneak Attack (5d6), Roguish Archetype feature
+ASI
+Sneak Attack (6d6), Reliable Talent
+ASI
+Sneak Attack (7d6), Roguish Archetype feature
+Blindsense
+Sneak Attack (8d6), Slippery Mind
+ASI
+Sneak Attack (9d6), Roguish Archetype feature
+Elusive
+Sneak Attack (10d6), ASI
+Stroke of Luck
+!
+Sorcerer
+Spellcasting, Sorcerous Origin
+Font of Magic
+Metamagic
+ASI
+-
+Sorcerous Origin feature
+-
+ASI
+-
+Metamagic
+-
+ASI
+-
+Sorcerous Origin feature
+-
+ASI
+Metamagic
+Sorcerous Origin feature
+ASI
+Sorcerous Restoration
+!
+Warlock
+Otherworldly Patron, Pact Magic
+Eldritch Invocations
+Pact Boon
+ASI
+-
+Otherworldly Patron feature
+-
+ASI
+-
+Otherworldly Patron feature
+Mystic Arcanum (6th level)
+ASI
+Mystic Arcanum (7th level)
+Otherworldly Patron feature
+Mystic Arcanum (8th level)
+ASI
+Mystic Arcanum (9th level)
+-
+ASI
+Eldritch Master
+!
+Wizard
+Spellcasting, Arcane Recovery
+Arcane Tradition
+-
+ASI
+-
+Arcane Tradition feature
+-
+ASI
+-
+Arcane Tradition feature
+-
+ASI
+-
+Arcane Tradition feature
+-
+ASI
+-
+Spell Mastery
+ASI
+Signature Spell

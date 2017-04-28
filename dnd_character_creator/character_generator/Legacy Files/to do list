@@ -1,0 +1,14 @@
+write output to file
+create "optimised" full char gen
+    generate scores as usual, sort in ascending order
+    determine best AS build per subclass
+    push ascending order into those asi
+
+    i.e. Barbarian is STR CON DEX WIS CHA INT, so push sorted AS on like that
+    maybe intialise all AS as zero, roll for a tmp score, sort it, then use list indexes and add
+
+    Barbarian_build is [0,2,1,4,5,3], barbarian_roll is [15, 14, 12, 9, 9, 9], barbarian_as is [0,0,0,0,0,0]
+    for i in build
+        as[build[i]] += roll[i]
+
+    output should be [15, 12, 14, 9, 9, 9]

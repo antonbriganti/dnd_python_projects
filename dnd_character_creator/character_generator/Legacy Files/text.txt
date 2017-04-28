@@ -1,0 +1,19 @@
+if __name__ == "__main__":
+
+    tmp = ''
+    while tmp == '':
+        p_subrace, p_race, p_background, p_subclass, p_class, ability_score = optimised_rng_char()
+
+        print('Behold, your character is...')
+        print(vowel_check(p_subrace, True) + p_subrace + ' ' + p_race)
+        print("They are " + vowel_check(p_background, False) + p_background)
+        print("Who is " + vowel_check(p_subclass, False) + p_subclass + ' ' + p_class)
+        multi_class(p_class, ability_score)
+        print('With these stats!')
+        print('STR: ' + str(ability_score[0]))
+        print('DEX: ' + str(ability_score[1]))
+        print('CON: ' + str(ability_score[2]))
+        print('INT: ' + str(ability_score[3]))
+        print('WIS: ' + str(ability_score[4]))
+        print('CHA: ' + str(ability_score[5]))
+        tmp = input()
