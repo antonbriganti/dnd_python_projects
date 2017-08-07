@@ -1,8 +1,4 @@
-__author__ = 'AntonBriganti'
-
 from random import *
-
-
 class Character:
     def __init__(self, optimise, expansion, homebrew, usermade):
         self.name = None
@@ -18,37 +14,20 @@ class Character:
         self.homebrew = homebrew
         self.usermade = usermade
 
-        self.strength = 0
-        self.dexterity = 0
-        self.constitution = 0
-        self.intelligence = 0
-        self.wisdom = 0
-        self.charisma = 0
+        self.ability_list = {
+                    'STR' : 0,
+                    'DEX' : 0,
+                    'CON' : 0,
+                    'INT' : 0,
+                    'WIS' : 0,
+                    'CHA' : 0
+                    }
 
     def print_list(self, lst):
         ind = 0
         for item in lst:
             print(ind, lst[ind])
             ind += 1
-
-    def vowel_check(self, string, capital):
-        if string == '':
-            if capital:
-                return 'A '
-            else:
-                return 'a '
-
-        vowels = ['A','a','E','e', 'I', 'i', 'O', 'o', 'U', 'u']
-        for char in vowels:
-            if string[0] == char:
-                if capital:
-                    return 'An '
-                else:
-                    return 'an '
-        if capital:
-            return 'A '
-        else:
-            return 'a '
 
     def input_loop(self, lst, prompt):
         flag = True
@@ -65,135 +44,101 @@ class Character:
             print('Bad input, try again. \n')
 
     def dice_roll(self):
-        roll_list = []
-
         # 'roll' 4d6
-        for _ in range(4):
-            roll_list.append(randint(1,6))
+        roll_list = [randint(1,6) for i in range(4)]
 
         # drop lowest dice roll
-        ind = 0
-        for j in range(len(roll_list)):
-            if roll_list[ind] > roll_list[j]:
-                ind = j
-        roll_list.pop(ind)
+        roll_list.sort()
+        roll_list.pop(0)
 
-        # calculate total
-        total = 0
-        for num in roll_list:
-            total += num
+        return sum(roll_list)
 
-        return total
+    def unsorted_rolls(self):
+        return [self.dice_roll() for i in range(6)]
 
-    def initial_abilities(self):
-        ability_list = []
+    def sorted_rolls(self):
+        return sorted(self.unsorted_rolls())
 
-        for _ in range(6):
-            ability_list.append(self.dice_roll())
-
-        return ability_list
-
-    def sorted_abilities(self):
-        ability_list = self.initial_abilities()
-
-        for i in range(1, len(ability_list)):
-            tmp = ability_list[i]
-            k = i
-            while k > 0 and tmp > ability_list[k - 1]:
-                ability_list[k] = ability_list[k - 1]
-                k -= 1
-            ability_list[k] = tmp
-
-        return ability_list
-
-    def set_extra_racial(self, subrace_points):
-        ind = randint(0, 4)
-        subrace_points[ind] += 1
-
-        flag = False
-        while not flag:
-            new = randint(0, 4)
-            if new != ind:
-                subrace_points[new] += 1
-                flag = True
-
-        return subrace_points
+    def set_extra_racial(self, subrace_bonus):
+        stat = choice(list(set(self.ability_list.keys()) - set(subrace_bonus)))
+        subrace_bonus.append((stat, 1))
+        return subrace_bonus
 
     def char_generator(self):
         #STR/DEX/CON/INT/WIS/CHA
         #race : [subrace, subrace points]
         race_list = {
-                    'Dwarf' : [['Hill', [0, 0, 2, 0, 1, 0]], ['Mountain', [2, 0, 2, 0, 0, 0]]],
-                    'Elf' : [['High', [0, 2, 0, 1, 0, 0]], ['Wood', [0, 2, 0, 0, 1, 0]], ['Dark', [0, 2, 0, 0, 0, 1]]],
-                    'Halfling' : [['Lightfoot', [0, 2, 0, 0, 0, 1]], ['Stout', [0, 2, 1, 0, 0, 0]]],
-                    'Human' : [['', [1, 1, 1, 1, 1, 1]]],
-                    'Dragonborn' : [['Black', [2, 0, 0, 0, 0, 1]], ['Blue', [2, 0, 0, 0, 0, 1]], ['Brass', [2, 0, 0, 0, 0, 1]],
-                                    ['Bronze', [2, 0, 0, 0, 0, 1]], ['Copper', [2, 0, 0, 0, 0, 1]], ['Gold', [2, 0, 0, 0, 0, 1]],
-                                    ['Green', [2, 0, 0, 0, 0, 1]], ['Red', [2, 0, 0, 0, 0, 1]], ['Silver', [2, 0, 0, 0, 0, 1]],
-                                    ['White', [2, 0, 0, 0, 0, 1]]],
-                    'Gnome' : [['Forest', [0, 1, 0, 2, 0, 0]], ['Rock', [0, 0, 1, 2, 0, 0]]],
-                    'Half Elf' : [['', [0, 0, 0, 0, 0, 2]]],
-                    'Half Orc' : [['', [2, 0, 1, 0, 0, 0]]],
-                    'Tiefling' : [['', [0, 0, 0, 1, 0, 2]]]
+                    'Dwarf' : [['Hill', [("CON", 2), ("WIS", 1)]], ['Mountain', [("STR", 2), ("CON", 2)]]],
+                    'Elf' : [['High', [("DEX", 2), ("INT", 1)]], ['Wood', [("DEX", 2), ("WIS", 1)]], ['Dark', [("DEX", 2), ("CHA", 1)]]],
+                    'Halfling' : [['Lightfoot', [("DEX", 2), ("CHA", 1)]], ['Stout', [("DEX", 2), ("CON", 1)]]],
+                    'Human' : [['', [("STR", 1), ("DEX", 1), ("CON", 1), ("INT", 1), ("WIS", 1), ("CHA", 1)]]],
+                    'Dragonborn' : [['Black', [("STR", 2), ("CHA", 1)]], ['Blue', [("STR", 2), ("CHA", 1)]], ['Brass', [("STR", 2), ("CHA", 1)]],
+                                    ['Bronze', [("STR", 2), ("CHA", 1)]], ['Copper', [("STR", 2), ("CHA", 1)]], ['Gold', [("STR", 2), ("CHA", 1)]],
+                                    ['Green', [("STR", 2), ("CHA", 1)]], ['Red', [("STR", 2), ("CHA", 1)]], ['Silver', [("STR", 2), ("CHA", 1)]],
+                                    ['White', [("STR", 2), ("CHA", 1)]]],
+                    'Gnome' : [['Forest', [('DEX', 1), ("INT", 2)]], ['Rock', [("CON", 1), ("INT", 2)]]],
+                    'Half Elf' : [['', [("CHA", 2)]]],
+                    'Half Orc' : [['', [("STR", 2), ("CON", 1)]]],
+                    'Tiefling' : [['', [("INT", 1), ("CHA", 2)]]]
                     }
 
 
         #class: [subclass, optimised build]
         class_list = {
-                      'Barbarian' : [['Berserker', [0, 2]], ['Totem (Bear)', [0, 2]], ['Totem (Eagle)', [0, 2]], ['Totem (Wolf)', [0, 2]]],
-                      'Bard' : [['College of Lore', [5, 1]], ['Collage of Valor', [5, 1]]],
-                      'Cleric' : [['Knowledge', [4, 2, 0]], ['Life', [4, 2, 0]], ['Light', [4, 2, 0]],
-                                  ['Nature', [4, 2, 0]], ['Tempest',[4, 2, 0]], ['Trickery', [4, 2, 0]], ['War', [4, 2, 0]]],
-                      'Druid' : [['Circle of the Land', [4, 2]], ['Circle of the Moon', [4, 2]]],
-                      'Fighter' : [['Champion', [0, 2, 1]], ['Battle Master', [0, 2, 1]], ['Eldritch Knight', [0, 3, 2, 1]]],
-                      'Monk' : [['Way of the Open Hand', [1, 4]], ['Way of Shadow', [1, 4]],  ['Way of the Four Elements', [1, 4]]],
-                      'Paladin' : [['Oath of Devotion', [0, 5]], ['Oath of the Ancients', [0, 5]], ['Oath of Vengeance', [0, 5]]],
-                      'Ranger' : [['Hunter', [1, 4]], ['Beast Master', [1, 4]]],
-                      'Rogue' : [['Thief', [1]], ['Assassin', [1, 5]], ['Arcane Trickster', [1, 3]]],
-                      'Sorcerer' : [['Draconic Bloodline', [5, 2]], ['Wild Magic', [5, 2]]],
-                      'Warlock' : [['Archfey', [5, 2]], ['Fiend', [5, 2]], ['Great Old One', [5, 2]]],
-                      'Wizard': [['Abjuration', [3, 2, 1]], ['Conjuration', [3, 2, 1]], ['Divination', [3, 2, 1]],
-                                  ['Enchantment', [3, 2, 5]], ['Evocation', [3, 2, 1]], ['Illusion', [3, 2, 1]], ['Necromancy', [3, 2, 1]],
-                                 ['Transmutation', [3, 2, 1]]]
+                      'Barbarian' : [['Berserker', ["STR", "CON"]], ['Totem (Bear)', ["STR", "CON"]], ['Totem (Eagle)', ["STR", "CON"]], ['Totem (Wolf)', ["STR", "CON"]]],
+                      'Bard' : [['College of Lore', ["CHA", "DEX"]], ['Collage of Valor', ["CHA", "DEX"]]],
+                      'Cleric' : [['Knowledge', ["WIS", "CON", "STR"]], ['Life', ["WIS", "CON", "STR"]], ['Light', ["WIS", "CON", "STR"]],
+                                  ['Nature', ["WIS", "CON", "STR"]], ['Tempest',["WIS", "CON", "STR"]], ['Trickery', ["WIS", "CON", "STR"]], ['War', ["WIS", "CON", "STR"]]],
+                      'Druid' : [['Circle of the Land', ["WIS", "CON"]], ['Circle of the Moon', ["WIS", "CON"]]],
+                      'Fighter' : [['Champion', ["STR", "CON", "DEX"]], ['Battle Master', ["STR", "CON", "DEX"]], ['Eldritch Knight', ["STR", "INT", "CON", "DEX"]]],
+                      'Monk' : [['Way of the Open Hand', ["DEX", "WIS"]], ['Way of Shadow', ["DEX", "WIS"]],  ['Way of the Four Elements', ["DEX", "WIS"]]],
+                      'Paladin' : [['Oath of Devotion', ["STR", "CHA"]], ['Oath of the Ancients', ["STR", "CHA"]], ['Oath of Vengeance', ["STR", "CHA"]]],
+                      'Ranger' : [['Hunter', ["DEX", "WIS"]], ['Beast Master', ["DEX", "WIS"]]],
+                      'Rogue' : [['Thief', ["DEX"]], ['Assassin', ["DEX", "CHA"]], ['Arcane Trickster', ["DEX", "INT"]]],
+                      'Sorcerer' : [['Draconic Bloodline', ["CHA", "CON"]], ['Wild Magic', ["CHA", "CON"]]],
+                      'Warlock' : [['Archfey', ["CHA", "CON"]], ['Fiend', ["CHA", "CON"]], ['Great Old One', ["CHA", "CON"]]],
+                      'Wizard': [['Abjuration', ["INT", "CON", "DEX"]], ['Conjuration', ["INT", "CON", "DEX"]], ['Divination', ["INT", "CON", "DEX"]],
+                                  ['Enchantment', ["INT", "CON", "DEX"]], ['Evocation', ["INT", "CON", "DEX"]], ['Illusion', ["INT", "CON", "DEX"]],
+                                  ['Necromancy', ["INT", "CON", "DEX"]], ['Transmutation', ["INT", "CON", "DEX"]]]
                       }
 
 
         # expansion data
         expansion_races = [
-                           ['Aarakocra', ['', [0, 2, 0, 0, 1, 0]]],
-                           ['Gensai', ['Air', [0, 1, 2, 0, 0, 0]], ['Earth', [1, 0, 2, 0, 0, 0]],
-                                      ['Fire', [0, 0, 2, 1, 0, 0]], ['Water', [0, 0, 2, 0, 1, 0]]],
-                           ['Goliath', ['', [2, 0, 1, 0, 0, 0]]],
-                           ['Aasimar', ['Protector', [0, 0, 0, 0, 1, 2]], ['Scourge', [0, 0, 1, 0, 0, 2]], ['Fallen', [1, 0, 0, 0, 0, 2]]],
-                           ['Firbolg', ['', [1, 0, 0, 0, 2, 0]]],
-                           ['Kenku', ['', [0, 2, 0, 0, 1, 0]]],
-                           ['Lizardfolk', ['', [0, 0, 2, 0, 1, 0]]],
-                           ['Tabaxi', ['', [0, 2, 0, 0, 0, 1]]],
-                           ['Triton', ['', [1, 0, 1, 0, 0, 1]]],
-                           ['Bugbear', ['', [2, 1, 0, 0, 0, 0]]],
-                           ['Goblin', ['', [0, 2, 1, 0, 0, 0]]],
-                           ['Hobgoblin', ['', [0, 0, 2, 1, 0, 0]]],
-                           ['Kobold', ['', [-2, 2, 0, 0, 0, 0]]],
-                           ['Orc', ['', [2, 0, 1, -2, 0, 0]]],
-                           ['Yuan Ti Pureblood', ['', [0, 0, 0, 1, 0, 2]]]
+                           ['Aarakocra', ['', [("DEX", 2), ("WIS", 1)]]],
+                           ['Gensai', ['Air', [("DEX", 1), ("CON", 2)]], ['Earth', [("STR", 1), ("CON", 2)]],
+                                      ['Fire', [("INT", 1), ("CON", 2)]], ['Water', [("WIS", 1), ("CON", 2)]]],
+                           ['Goliath', ['', [("STR", 2), ("CON", 1)]]],
+                           ['Aasimar', ['Protector', [("WIS", 1), ("CHA", 2)]], ['Scourge', [("CON", 1), ("CHA", 2)]], ['Fallen', [("STR", 1), ("CHA", 2)]]],
+                           ['Firbolg', ['', [("STR", 1), ("WIS", 2)]]],
+                           ['Kenku', ['', [("DEX", 2), ("WIS", 1)]]],
+                           ['Lizardfolk', ['', [("WIS", 1), ("CON", 2)]]],
+                           ['Tabaxi', ['', [("DEX", 2), ("CHA", 1)]]],
+                           ['Triton', ['', [("STR", 1), ("CON", 1), ("CHA", 1)]]],
+                           ['Bugbear', ['', [("STR", 2), ("DEX", 1)]]],
+                           ['Goblin', ['', [("DEX", 2), ("CON", 1)]]],
+                           ['Hobgoblin', ['', [("CON", 2), ("INT", 1)]]],
+                           ['Kobold', ['', [("STR", -2), ("DEX", 2)]]],
+                           ['Orc', ['', [("STR", 2), ("CON", 1), ("INT", -2)]]],
+                           ['Yuan Ti Pureblood', ['', [("INT", 1), ("CHA", 2)]]]
                           ]
 
         expansion_subraces = [
-                              ["Dwarf", ['Duergar', [1, 0, 2, 0, 0, 0]]],
-                              ["Gnome", ['Deep', [0, 1, 0, 2, 0, 0]]],
-                              ["Tiefling", ['Feral', [0, 2, 0, 1, 0, 0]]]
+                              ["Dwarf", ['Duergar', [("STR", 1), ("CON", 2)]]],
+                              ["Gnome", ['Deep', [("DEX", 1), ("CON", 2)]]],
+                              ["Tiefling", ['Feral', [("DEX", 2), ("INT", 1)]]]
                              ]
 
         expansion_subclass = [
-                              ["Barbarian", ['Battlerager', [0, 2]], ['Totem (Elk)', [0, 2]], ['Totem (Tiger)', [0, 2]]],
-                              ["Cleric", ['Arcana', [4, 2, 0]]],
-                              ["Fighter", ['Purple Dragon Knight', [0, 2, 1]]],
-                              ["Monk", ['Way of the Long Death', [1, 4]], ['Way of the Sun Soul', [1, 4]]],
-                              ["Paladin", ['Oath of the Crown', [0, 5]]],
-                              ["Rogue", ['Mastermind', [1, 3]], ['Swashbuckler', [1, 5]]],
-                              ["Sorcerer", ['Storm Sorcery', [5, 2]]],
-                              ["Warlock", ['Undying', [5, 2]]],
-                              ["Wizard, ", ['Bladeslinger', [3, 2, 1]]]
+                              ["Barbarian", ['Battlerager', ["STR", "CON"]], ['Totem (Elk)', ["STR", "CON"]], ['Totem (Tiger)', ["STR", "CON"]]],
+                              ["Cleric", ['Arcana', ["WIS", "CON", "STR"]]],
+                              ["Fighter", ['Purple Dragon Knight', ["STR", "CON", "DEX"]]],
+                              ["Monk", ['Way of the Long Death', ["DEX", "WIS"]], ['Way of the Sun Soul', ["DEX", "WIS"]]],
+                              ["Paladin", ['Oath of the Crown', ["STR", "CHA"]]],
+                              ["Rogue", ['Mastermind', ["DEX", "INT"]], ['Swashbuckler', ["DEX", "CHA"]]],
+                              ["Sorcerer", ['Storm Sorcery', ["CHA", "CON"]]],
+                              ["Warlock", ['Undying', ["CHA", "CON"]]],
+                              ["Wizard, ", ['Bladeslinger', ["INT", "CON", "DEX"]]]
                              ]
 
         if self.expansion:
@@ -213,10 +158,10 @@ class Character:
         # homebrew data
         homebrew_classes = ["Blood Hunter"]
         homebrew_subclasses = [
-                               ['Bard', ['College of the Maestro', [5, 1]]],
-                               ["Fighter", ['Gunslinger', [1, 2]]],
-                               ["Blood Hunter", ['Order of the Mutant', [0, 4]], ['Order of the Ghostslayer', [0, 4]],
-                                                ['Order of the Profane Soul', [0, 4]], ['Order of the Lycan', [0, 4]]]
+                               ['Bard', ['College of the Maestro', ["CHA", "DEX"]]],
+                               ["Fighter", ['Gunslinger', ["DEX", "INT"]]],
+                               ["Blood Hunter", ['Order of the Mutant', ["STR", "WIS"]], ['Order of the Ghostslayer', ["STR", "WIS"]],
+                                                ['Order of the Profane Soul', ["STR", "WIS"]], ['Order of the Lycan', ["STR", "WIS"]]]
                               ]
 
 
@@ -240,40 +185,36 @@ class Character:
         char_subclass, build = choice(class_list[char_class])
 
         # background select
-        char_background = background_list[randint(0, len(background_list)-1)]
+        char_background = choice(background_list)
 
         # sorted rolls
         if self.optimise:
-            roll = self.sorted_abilities()
-            ability_list = [0, 0, 0, 0, 0, 0]
+            unallocated_points = self.sorted_rolls()
 
             #iterates through build, adds best roll to given index
-            for x in range(len(build)):
-                ability_list[build[x]] += roll[0]
-                roll.pop(0)
+            for ability in build:
+                self.ability_list[ability] += unallocated_points.pop(0)
 
             #adds remaining rolls to ability scores randomly
-            ability_count = len(build) #count of abilities set
-            set_abilities = list(build) #abilities already set
+            remaining_abilities = list(set(self.ability_list.keys()) - set(build))
+            shuffle(remaining_abilities)
 
-            while ability_count < 6:
-                ind = randint(0, len(ability_list)-1)
-                if ind not in set_abilities:
-                    ability_list[ind] += roll[0]
-                    roll.pop(0)
-                    set_abilities.append(ind)
-                    ability_count += 1
+            for stat in remaining_abilities:
+                self.ability_list[stat] += unallocated_points.pop(0)
+
 
         else:
-            ability_list = self.initial_abilities()
+            roll = self.unsorted_rolls()
+            for key in self.ability_list.keys(): self.ability_list[key] += roll.pop(0)
 
 
         # racial bonus
         if char_race == "Half Elf":
-            racial_bonus = self.set_extra_racial(racial_bonus) # set random extra ability
+            for _ in range(2):
+                racial_bonus = self.set_extra_racial(racial_bonus) # set random extra ability
 
-        for i in range(len(ability_list)):
-            ability_list[i] += racial_bonus[i]
+        for bonus in racial_bonus:
+            self.ability_list[bonus[0]] += bonus[1]
 
         self.s_race = char_subrace
         self.m_race = char_race
@@ -281,15 +222,6 @@ class Character:
         self.s_class = (char_subclass)
         self.m_class = (char_class)
 
-        self.strength = ability_list[0]
-        self.dexterity = ability_list[1]
-        self.constitution = ability_list[2]
-        self.intelligence = ability_list[3]
-        self.wisdom = ability_list[4]
-        self.charisma = ability_list[5]
-        self.abilities = ability_list
-
-        print()
         #self.name = input('What is their name? ')
         self.print_character()
 
@@ -303,15 +235,16 @@ class Character:
             print(self.s_class, self.m_class)
             print(self.background)
             print('Level: ' + str(self.level))
-            print('STR: ' + str(self.strength))
-            print('DEX: ' + str(self.dexterity))
-            print('CON: ' + str(self.constitution))
-            print('INT: ' + str(self.intelligence))
-            print('WIS: ' + str(self.wisdom))
-            print('CHA: ' + str(self.charisma))
+            print('STR: ' + str(self.ability_list["STR"]))
+            print('DEX: ' + str(self.ability_list["DEX"]))
+            print('CON: ' + str(self.ability_list["CON"]))
+            print('INT: ' + str(self.ability_list["INT"]))
+            print('WIS: ' + str(self.ability_list["WIS"]))
+            print('CHA: ' + str(self.ability_list["CHA"]))
             input('Press Enter to continue. ')
             print()
 
-char = Character(True, True, True, False)
+
 while True:
+    char = Character(True, True, True, False)
     char.char_generator()
