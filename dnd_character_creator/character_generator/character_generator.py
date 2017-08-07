@@ -24,10 +24,8 @@ class Character:
                     }
 
     def print_list(self, lst):
-        ind = 0
-        for item in lst:
-            print(ind, lst[ind])
-            ind += 1
+        for i in range(len(lst)):
+            print(i, lst[i]) if not isinstance(lst[0], list) else print(i, lst[i][0])
 
     def input_loop(self, lst, prompt):
         flag = True
@@ -82,7 +80,6 @@ class Character:
                     'Tiefling' : [['', [("INT", 1), ("CHA", 2)]]]
                     }
 
-
         #class: [subclass, optimised build]
         class_list = {
                       'Barbarian' : [['Berserker', ["STR", "CON"]], ['Totem (Bear)', ["STR", "CON"]], ['Totem (Eagle)', ["STR", "CON"]], ['Totem (Wolf)', ["STR", "CON"]]],
@@ -101,7 +98,6 @@ class Character:
                                   ['Enchantment', ["INT", "CON", "DEX"]], ['Evocation', ["INT", "CON", "DEX"]], ['Illusion', ["INT", "CON", "DEX"]],
                                   ['Necromancy', ["INT", "CON", "DEX"]], ['Transmutation', ["INT", "CON", "DEX"]]]
                       }
-
 
         # expansion data
         expansion_races = [
@@ -164,7 +160,6 @@ class Character:
                                                 ['Order of the Profane Soul', ["STR", "WIS"]], ['Order of the Lycan', ["STR", "WIS"]]]
                               ]
 
-
         if self.homebrew:
             for h_class in homebrew_classes:
                 class_list[h_class] = []
@@ -176,16 +171,38 @@ class Character:
         background_list = ['Acolyte', 'Charlatan', 'Criminal', 'Entertainer', 'Folk Hero', 'Guild Artisan', 'Hermit',
                            'Noble', 'Outlander', 'Sage', 'Sailor', 'Soldier', 'Urchin']
 
-        # random select of race/subrace
-        char_race = choice(list(race_list.keys())) # randomly choose from dictionary keys as race
-        char_subrace, racial_bonus = choice(race_list[char_race]) # randomly choose subrace and build
+        if self.usermade:
+            # select of race/subrace
+            user_input = self.input_loop(sorted(list(race_list)), 'Choose a race by index: ')
+            char_race = sorted(list(race_list))[user_input]
+            print()
 
-        # random select of class/subclass
-        char_class = choice(list(class_list.keys()))
-        char_subclass, build = choice(class_list[char_class])
+            if len(race_list[char_race]) == 1:
+                char_subrace, racial_bonus = race_listT[char_race][0]
+            else:
+                user_input = self.input_loop(race_list[char_race], 'Choose a subrace by index: ')
+                char_subrace, racial_bonus = race_list[char_race][user_input]
+            print()
 
-        # background select
-        char_background = choice(background_list)
+            # select of class/subclass
+            user_input = self.input_loop(sorted(list(class_list)), 'Choose a class by index: ')
+            char_class = sorted(list(class_list))[user_input]
+            print()
+
+            user_input = self.input_loop(class_list[char_class], 'Choose a subclass by index: ')
+            char_subclass, build = class_list[char_class][user_input]
+            print()
+
+            user_input = self.input_loop(background_list, 'Choose a background by index: ')
+            char_background = background_list[user_input]
+
+        else:
+            # random select of race/subrace
+            char_race = choice(list(race_list.keys())) # randomly choose from dictionary keys as race
+            char_subrace, racial_bonus = choice(race_list[char_race]) # randomly choose subrace and build
+            char_class = choice(list(class_list.keys()))
+            char_subclass, build = choice(class_list[char_class])
+            char_background = choice(background_list)
 
         # sorted rolls
         if self.optimise:
@@ -245,6 +262,7 @@ class Character:
             print()
 
 
-while True:
-    char = Character(True, True, True, False)
-    char.char_generator()
+
+#optimise, expansion, homebrew, usermade
+char = Character(True, True, True, True)
+char.char_generator()
