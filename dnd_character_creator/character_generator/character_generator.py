@@ -30,14 +30,10 @@ class Character:
         subrace_bonus.append((stat, 1))
         return subrace_bonus
 
-    def char_generator(self):
+    def set_races(self):
         race_list = json_reader.get_races('data/phb_data.json')
-        class_list = json_reader.get_classes('data/phb_data.json')
-
         if self.expansion:
-            # expansion data
-            expansion_races = json_reader.get_races("data/expansion_data.json")
-            expansion_subclass = json_reader.get_classes("data/expansion_data.json")
+            expansion_races = json_reader.get_races("data/expansion_data.json") # expansion data
             for race in expansion_races:
                 if race not in race_list:
                     race_list[race] = expansion_races[race]
@@ -45,11 +41,18 @@ class Character:
                     for subrace in expansion_races[race]:
                         race_list[race].append(subrace)
 
-            for p_class in expansion_subclass:
+        return race_list
+
+    def set_classes(self):
+        class_list = json_reader.get_classes('data/phb_data.json')
+
+        if self.expansion:
+            expansion_classes = json_reader.get_classes("data/expansion_data.json")
+            for p_class in expansion_classes:
                 if p_class not in class_list:
-                    class_list[p_class] = expansion_subclass[p_class]
+                    class_list[p_class] = expansion_classes[p_class]
                 else:
-                    for subclass in expansion_subclass[p_class]:
+                    for subclass in expansion_classes[p_class]:
                         class_list[p_class].append(subclass)
 
         if self.homebrew:
@@ -62,6 +65,9 @@ class Character:
                     for subclass in homebrew_classes[p_class]:
                         class_list[p_class].append(subclass)
 
+    def char_generator(self):
+        race_list = self.set_races()
+        class_list = self.set_classes()
         background_list = ['Acolyte', 'Charlatan', 'Criminal', 'Entertainer', 'Folk Hero', 'Guild Artisan', 'Hermit',
                            'Noble', 'Outlander', 'Sage', 'Sailor', 'Soldier', 'Urchin']
 
