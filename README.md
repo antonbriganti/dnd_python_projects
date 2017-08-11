@@ -3,10 +3,12 @@
 ## Character Creator
 ### Python Programs
 Programs that are meant to be run from the .py files
+Currently uses JSON files as input for class and race information
 
-* Share Versions - Text driven interfaces with creation flags being set during run time
-* Game Files - Simple game that uses custom Character class, still very rough
-* Legacy Files - Original base files, the "V1" of the current programs
+* Legacy Files
+  - Original base files, the "V1" of the current programs
+  - Share Versions: Text driven interfaces with creation flags being set during run time
+  - Game Files: Simple game that uses custom Character class, still very rough
 
 ### Flask App
 In development flask app of the Character Creator.
