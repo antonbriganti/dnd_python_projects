@@ -1,4 +1,6 @@
 from random import *
+import json_reader
+import text_ui_helper, stat_roller
 class Character:
     def __init__(self, optimise, expansion, homebrew, usermade):
         self.name = None
@@ -23,177 +25,69 @@ class Character:
                     'CHA' : 0
                     }
 
-    def print_list(self, lst):
-        for i in range(len(lst)):
-            print(i, lst[i]) if not isinstance(lst[0], list) else print(i, lst[i][0])
-
-    def input_loop(self, lst, prompt):
-        flag = True
-        while flag:
-            self.print_list(lst)
-            try:
-                ind = int(input(prompt))
-            except ValueError:
-                ind = -1
-
-            if 0 <= ind <= len(lst):
-                return ind
-
-            print('Bad input, try again. \n')
-
-    def dice_roll(self):
-        # 'roll' 4d6
-        roll_list = [randint(1,6) for i in range(4)]
-
-        # drop lowest dice roll
-        roll_list.sort()
-        roll_list.pop(0)
-
-        return sum(roll_list)
-
-    def unsorted_rolls(self):
-        return [self.dice_roll() for i in range(6)]
-
-    def sorted_rolls(self):
-        return sorted(self.unsorted_rolls())
-
     def set_extra_racial(self, subrace_bonus):
         stat = choice(list(set(self.ability_list.keys()) - set(subrace_bonus)))
         subrace_bonus.append((stat, 1))
         return subrace_bonus
 
     def char_generator(self):
-        #STR/DEX/CON/INT/WIS/CHA
-        #race : [subrace, subrace points]
-        race_list = {
-                    'Dwarf' : [['Hill', [("CON", 2), ("WIS", 1)]], ['Mountain', [("STR", 2), ("CON", 2)]]],
-                    'Elf' : [['High', [("DEX", 2), ("INT", 1)]], ['Wood', [("DEX", 2), ("WIS", 1)]], ['Dark', [("DEX", 2), ("CHA", 1)]]],
-                    'Halfling' : [['Lightfoot', [("DEX", 2), ("CHA", 1)]], ['Stout', [("DEX", 2), ("CON", 1)]]],
-                    'Human' : [['', [("STR", 1), ("DEX", 1), ("CON", 1), ("INT", 1), ("WIS", 1), ("CHA", 1)]]],
-                    'Dragonborn' : [['Black', [("STR", 2), ("CHA", 1)]], ['Blue', [("STR", 2), ("CHA", 1)]], ['Brass', [("STR", 2), ("CHA", 1)]],
-                                    ['Bronze', [("STR", 2), ("CHA", 1)]], ['Copper', [("STR", 2), ("CHA", 1)]], ['Gold', [("STR", 2), ("CHA", 1)]],
-                                    ['Green', [("STR", 2), ("CHA", 1)]], ['Red', [("STR", 2), ("CHA", 1)]], ['Silver', [("STR", 2), ("CHA", 1)]],
-                                    ['White', [("STR", 2), ("CHA", 1)]]],
-                    'Gnome' : [['Forest', [('DEX', 1), ("INT", 2)]], ['Rock', [("CON", 1), ("INT", 2)]]],
-                    'Half Elf' : [['', [("CHA", 2)]]],
-                    'Half Orc' : [['', [("STR", 2), ("CON", 1)]]],
-                    'Tiefling' : [['', [("INT", 1), ("CHA", 2)]]]
-                    }
-
-        #class: [subclass, optimised build]
-        class_list = {
-                      'Barbarian' : [['Berserker', ["STR", "CON"]], ['Totem (Bear)', ["STR", "CON"]], ['Totem (Eagle)', ["STR", "CON"]], ['Totem (Wolf)', ["STR", "CON"]]],
-                      'Bard' : [['College of Lore', ["CHA", "DEX"]], ['Collage of Valor', ["CHA", "DEX"]]],
-                      'Cleric' : [['Knowledge', ["WIS", "CON", "STR"]], ['Life', ["WIS", "CON", "STR"]], ['Light', ["WIS", "CON", "STR"]],
-                                  ['Nature', ["WIS", "CON", "STR"]], ['Tempest',["WIS", "CON", "STR"]], ['Trickery', ["WIS", "CON", "STR"]], ['War', ["WIS", "CON", "STR"]]],
-                      'Druid' : [['Circle of the Land', ["WIS", "CON"]], ['Circle of the Moon', ["WIS", "CON"]]],
-                      'Fighter' : [['Champion', ["STR", "CON", "DEX"]], ['Battle Master', ["STR", "CON", "DEX"]], ['Eldritch Knight', ["STR", "INT", "CON", "DEX"]]],
-                      'Monk' : [['Way of the Open Hand', ["DEX", "WIS"]], ['Way of Shadow', ["DEX", "WIS"]],  ['Way of the Four Elements', ["DEX", "WIS"]]],
-                      'Paladin' : [['Oath of Devotion', ["STR", "CHA"]], ['Oath of the Ancients', ["STR", "CHA"]], ['Oath of Vengeance', ["STR", "CHA"]]],
-                      'Ranger' : [['Hunter', ["DEX", "WIS"]], ['Beast Master', ["DEX", "WIS"]]],
-                      'Rogue' : [['Thief', ["DEX"]], ['Assassin', ["DEX", "CHA"]], ['Arcane Trickster', ["DEX", "INT"]]],
-                      'Sorcerer' : [['Draconic Bloodline', ["CHA", "CON"]], ['Wild Magic', ["CHA", "CON"]]],
-                      'Warlock' : [['Archfey', ["CHA", "CON"]], ['Fiend', ["CHA", "CON"]], ['Great Old One', ["CHA", "CON"]]],
-                      'Wizard': [['Abjuration', ["INT", "CON", "DEX"]], ['Conjuration', ["INT", "CON", "DEX"]], ['Divination', ["INT", "CON", "DEX"]],
-                                  ['Enchantment', ["INT", "CON", "DEX"]], ['Evocation', ["INT", "CON", "DEX"]], ['Illusion', ["INT", "CON", "DEX"]],
-                                  ['Necromancy', ["INT", "CON", "DEX"]], ['Transmutation', ["INT", "CON", "DEX"]]]
-                      }
-
-        # expansion data
-        expansion_races = [
-                           ['Aarakocra', ['', [("DEX", 2), ("WIS", 1)]]],
-                           ['Gensai', ['Air', [("DEX", 1), ("CON", 2)]], ['Earth', [("STR", 1), ("CON", 2)]],
-                                      ['Fire', [("INT", 1), ("CON", 2)]], ['Water', [("WIS", 1), ("CON", 2)]]],
-                           ['Goliath', ['', [("STR", 2), ("CON", 1)]]],
-                           ['Aasimar', ['Protector', [("WIS", 1), ("CHA", 2)]], ['Scourge', [("CON", 1), ("CHA", 2)]], ['Fallen', [("STR", 1), ("CHA", 2)]]],
-                           ['Firbolg', ['', [("STR", 1), ("WIS", 2)]]],
-                           ['Kenku', ['', [("DEX", 2), ("WIS", 1)]]],
-                           ['Lizardfolk', ['', [("WIS", 1), ("CON", 2)]]],
-                           ['Tabaxi', ['', [("DEX", 2), ("CHA", 1)]]],
-                           ['Triton', ['', [("STR", 1), ("CON", 1), ("CHA", 1)]]],
-                           ['Bugbear', ['', [("STR", 2), ("DEX", 1)]]],
-                           ['Goblin', ['', [("DEX", 2), ("CON", 1)]]],
-                           ['Hobgoblin', ['', [("CON", 2), ("INT", 1)]]],
-                           ['Kobold', ['', [("STR", -2), ("DEX", 2)]]],
-                           ['Orc', ['', [("STR", 2), ("CON", 1), ("INT", -2)]]],
-                           ['Yuan Ti Pureblood', ['', [("INT", 1), ("CHA", 2)]]]
-                          ]
-
-        expansion_subraces = [
-                              ["Dwarf", ['Duergar', [("STR", 1), ("CON", 2)]]],
-                              ["Gnome", ['Deep', [("DEX", 1), ("CON", 2)]]],
-                              ["Tiefling", ['Feral', [("DEX", 2), ("INT", 1)]]]
-                             ]
-
-        expansion_subclass = [
-                              ["Barbarian", ['Battlerager', ["STR", "CON"]], ['Totem (Elk)', ["STR", "CON"]], ['Totem (Tiger)', ["STR", "CON"]]],
-                              ["Cleric", ['Arcana', ["WIS", "CON", "STR"]]],
-                              ["Fighter", ['Purple Dragon Knight', ["STR", "CON", "DEX"]]],
-                              ["Monk", ['Way of the Long Death', ["DEX", "WIS"]], ['Way of the Sun Soul', ["DEX", "WIS"]]],
-                              ["Paladin", ['Oath of the Crown', ["STR", "CHA"]]],
-                              ["Rogue", ['Mastermind', ["DEX", "INT"]], ['Swashbuckler', ["DEX", "CHA"]]],
-                              ["Sorcerer", ['Storm Sorcery', ["CHA", "CON"]]],
-                              ["Warlock", ['Undying', ["CHA", "CON"]]],
-                              ["Wizard, ", ['Bladeslinger', ["INT", "CON", "DEX"]]]
-                             ]
+        race_list = json_reader.get_races('data/phb_data.json')
+        class_list = json_reader.get_classes('data/phb_data.json')
 
         if self.expansion:
+            # expansion data
+            expansion_races = json_reader.get_races("data/expansion_data.json")
+            expansion_subclass = json_reader.get_classes("data/expansion_data.json")
             for race in expansion_races:
-                race_list[race[0]] = []
-                for i in range(1, len(race)):
-                    race_list[race[0]].append(race[i])
+                if race not in race_list:
+                    race_list[race] = expansion_races[race]
+                else:
+                    for subrace in expansion_races[race]:
+                        race_list[race].append(subrace)
 
-            for subrace in expansion_subraces:
-                for i in range(1, len(subrace)):
-                    race_list[subrace[0]].append(subrace[i])
-
-            for subclass in expansion_subclass:
-                for i in range(1, len(subclass)-1):
-                    class_list[subclass[0]].append(subclass[i])
-
-        # homebrew data
-        homebrew_classes = ["Blood Hunter"]
-        homebrew_subclasses = [
-                               ['Bard', ['College of the Maestro', ["CHA", "DEX"]]],
-                               ["Fighter", ['Gunslinger', ["DEX", "INT"]]],
-                               ["Blood Hunter", ['Order of the Mutant', ["STR", "WIS"]], ['Order of the Ghostslayer', ["STR", "WIS"]],
-                                                ['Order of the Profane Soul', ["STR", "WIS"]], ['Order of the Lycan', ["STR", "WIS"]]]
-                              ]
+            for p_class in expansion_subclass:
+                if p_class not in class_list:
+                    class_list[p_class] = expansion_subclass[p_class]
+                else:
+                    for subclass in expansion_subclass[p_class]:
+                        class_list[p_class].append(subclass)
 
         if self.homebrew:
-            for h_class in homebrew_classes:
-                class_list[h_class] = []
-
-            for subclass in homebrew_subclasses:
-                for i in range(1, len(subclass)):
-                    class_list[subclass[0]].append(subclass[i])
+            # homebrew data
+            homebrew_classes = json_reader.get_classes("data/homebrew_data.json")
+            for p_class in homebrew_classes:
+                if p_class not in class_list:
+                    class_list[p_class] = homebrew_classes[p_class]
+                else:
+                    for subclass in homebrew_classes[p_class]:
+                        class_list[p_class].append(subclass)
 
         background_list = ['Acolyte', 'Charlatan', 'Criminal', 'Entertainer', 'Folk Hero', 'Guild Artisan', 'Hermit',
                            'Noble', 'Outlander', 'Sage', 'Sailor', 'Soldier', 'Urchin']
 
         if self.usermade:
             # select of race/subrace
-            user_input = self.input_loop(sorted(list(race_list)), 'Choose a race by index: ')
+            user_input = text_ui_helper.input_loop(sorted(list(race_list)), 'Choose a race by index: ')
             char_race = sorted(list(race_list))[user_input]
             print()
 
             if len(race_list[char_race]) == 1:
-                char_subrace, racial_bonus = race_listT[char_race][0]
+                char_subrace, racial_bonus = race_list[char_race][0]
             else:
-                user_input = self.input_loop(race_list[char_race], 'Choose a subrace by index: ')
+                user_input = text_ui_helper.input_loop(race_list[char_race], 'Choose a subrace by index: ')
                 char_subrace, racial_bonus = race_list[char_race][user_input]
             print()
 
             # select of class/subclass
-            user_input = self.input_loop(sorted(list(class_list)), 'Choose a class by index: ')
+            user_input = text_ui_helper.input_loop(sorted(list(class_list)), 'Choose a class by index: ')
             char_class = sorted(list(class_list))[user_input]
             print()
 
-            user_input = self.input_loop(class_list[char_class], 'Choose a subclass by index: ')
+            user_input = text_ui_helper.input_loop(class_list[char_class], 'Choose a subclass by index: ')
             char_subclass, build = class_list[char_class][user_input]
             print()
 
-            user_input = self.input_loop(background_list, 'Choose a background by index: ')
+            user_input = text_ui_helper.input_loop(background_list, 'Choose a background by index: ')
             char_background = background_list[user_input]
 
         else:
@@ -206,24 +100,19 @@ class Character:
 
         # sorted rolls
         if self.optimise:
-            unallocated_points = self.sorted_rolls()
-
             #iterates through build, adds best roll to given index
+            unallocated_points = stat_roller.sorted_rolls()
             for ability in build:
-                self.ability_list[ability] += unallocated_points.pop(0)
+                self.ability_list[ability] += unallocated_points.pop()
 
             #adds remaining rolls to ability scores randomly
             remaining_abilities = list(set(self.ability_list.keys()) - set(build))
             shuffle(remaining_abilities)
-
             for stat in remaining_abilities:
-                self.ability_list[stat] += unallocated_points.pop(0)
-
-
+                self.ability_list[stat] += unallocated_points.pop()
         else:
-            roll = self.unsorted_rolls()
-            for key in self.ability_list.keys(): self.ability_list[key] += roll.pop(0)
-
+            roll = stat_roller.sorted_rolls()
+            for key in self.ability_list.keys(): self.ability_list[key] += roll.pop()
 
         # racial bonus
         if char_race == "Half Elf":

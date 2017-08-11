@@ -1,0 +1,36 @@
+{
+	"classes": [{
+			"class": "Bard",
+			"subclasses": [{
+				"name": "College of the Maestro",
+				"build": "CHA, DEX"
+			}]
+		},
+		{
+			"class": "Fighter",
+			"subclasses": [{
+				"name": "Gunslinger",
+				"build": "DEX, INT"
+			}]
+		},
+		{
+			"class": "Blood Hunter",
+			"subclasses": [{
+					"name": "Order of the Mutant",
+					"build": "STR, WIS"
+				},
+				{
+					"name": "Order of the Ghostslayer",
+					"build": "STR, WIS"
+				}, {
+					"name": "Order of the Profane Soul",
+					"build": "STR, WIS"
+				},
+				{
+					"name": "Order of the Lycan",
+					"build": "STR, WIS"
+				}
+			]
+		}
+	]
+}

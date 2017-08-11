@@ -1,0 +1,311 @@
+{
+	"races": [{
+			"race": "Aarakocra",
+			"subraces": [{
+				"name": "",
+				"bonuses": {
+					"DEX": 2,
+					"WIS": 1
+				}
+			}]
+		},
+		{
+			"race": "Gensai",
+			"subraces": [{
+					"name": "Air",
+					"bonuses": {
+						"DEX": 1,
+						"CON": 2
+					}
+				},
+				{
+					"name": "Earth",
+					"bonuses": {
+						"STR": 1,
+						"CON": 2
+					}
+				},
+				{
+					"name": "Fire",
+					"bonuses": {
+						"INT": 1,
+						"CON": 2
+					}
+				},
+				{
+					"name": "Water",
+					"bonuses": {
+						"WIS": 1,
+						"CON": 2
+					}
+				}
+			]
+		},
+		{
+			"race": "Goliath",
+			"subraces": [{
+				"name": "",
+				"bonuses": {
+					"CON": 1,
+					"STR": 2
+				}
+			}]
+		},
+		{
+			"race": "Aasimar",
+			"subraces": [{
+					"name": "Protector",
+					"bonuses": {
+						"WIS": 1,
+						"CHA": 2
+					}
+				},
+				{
+					"name": "Scourge",
+					"bonuses": {
+						"CON": 1,
+						"CHA": 2
+					}
+				},
+				{
+					"name": "Fallen",
+					"bonuses": {
+						"STR": 1,
+						"CHA": 2
+					}
+				}
+			]
+		},
+		{
+			"race": "Firbolg",
+			"subraces": [{
+				"name": "",
+				"bonuses": {
+					"WIS": 1,
+					"CHA": 2
+				}
+			}]
+		},
+		{
+			"race": "Kenku",
+			"subraces": [{
+				"name": "",
+				"bonuses": {
+					"WIS": 1,
+					"DEX": 2
+				}
+			}]
+		},
+		{
+			"race": "Lizardfolk",
+			"subraces": [{
+				"name": "",
+				"bonuses": {
+					"WIS": 1,
+					"CON": 2
+				}
+			}]
+		},
+		{
+			"race": "Tabaxi",
+			"subraces": [{
+				"name": "",
+				"bonuses": {
+					"DEX": 2,
+					"CHA": 1
+				}
+			}]
+		},
+		{
+			"race": "Triton",
+			"subraces": [{
+				"name": "",
+				"bonuses": {
+					"STR": 1,
+					"CON": 1,
+					"CHA": 1
+				}
+			}]
+		},
+		{
+			"race": "Bugbear",
+			"subraces": [{
+				"name": "",
+				"bonuses": {
+					"STR": 2,
+					"DEX": 1
+				}
+			}]
+		},
+		{
+			"race": "Goblin",
+			"subraces": [{
+				"name": "",
+				"bonuses": {
+					"DEX": 2,
+					"CON": 1
+				}
+			}]
+		},
+		{
+			"race": "Hobgoblin",
+			"subraces": [{
+				"name": "",
+				"bonuses": {
+					"CON": 2,
+					"INT": 1
+				}
+			}]
+		},
+		{
+			"race": "Kobold",
+			"subraces": [{
+				"name": "",
+				"bonuses": {
+					"STR": -2,
+					"DEX": 2
+				}
+			}]
+		},
+		{
+			"race": "Orc",
+			"subraces": [{
+				"name": "",
+				"bonuses": {
+					"STR": 2,
+					"CON": 1,
+					"INT": -2
+				}
+			}]
+		},
+		{
+			"race": "Yuan Ti Pureblood",
+			"subraces": [{
+				"name": "",
+				"bonuses": {
+					"INT": 1,
+					"CHA": 2
+				}
+			}]
+		},
+    {
+  			"race": "Dwarf",
+  			"subraces": [{
+  				"name": "Duergar",
+  				"bonuses": {
+  					"STR": 1,
+  					"CON": 2
+  				}
+  			}]
+  		},
+  		{
+  			"race": "Gnome",
+  			"subraces": [{
+  				"name": "Deep",
+  				"bonuses": {
+  					"DEX": 1,
+  					"CON": 2
+  				}
+  			}]
+  		},
+  		{
+  			"race": "Tiefling",
+  			"subraces": [{
+  				"name": "Feral",
+  				"bonuses": {
+  					"DEX": 2,
+  					"INT": 1
+  				}
+  			}]
+  		}
+	],
+	"classes": [{
+			"class": "Barbarian",
+			"subclasses": [{
+					"name": "Battlerager",
+					"build": "STR, CON"
+				},
+				{
+					"name": "Totem (Elk)",
+					"build": "STR, CON"
+				},
+				{
+					"name": "Totem (Tiger)",
+					"build": "STR, CON"
+				}
+			]
+		},
+		{
+			"class": "Cleric",
+			"subclasses": [{
+					"name": "Arcana",
+					"build": "WIS, CON, STR"
+				}
+			]
+		},
+		{
+			"class": "Fighter",
+			"subclasses": [{
+					"name": "Purple Dragon Knight",
+					"build": "STR, CON, DEX"
+				}
+			]
+		},
+		{
+			"class": "Monk",
+			"subclasses": [{
+					"name": "Way of the Long Death",
+					"build": "DEX, WIS"
+				},
+				{
+					"name": "Way of the Sun Soul",
+					"build": "DEX, WIS"
+				}
+			]
+		},
+		{
+			"class": "Paladin",
+			"subclasses": [{
+					"name": "Oath of the Crown",
+					"build": "STR, CHA"
+				}
+			]
+		},
+		{
+			"class": "Rogue",
+			"subclasses": [{
+					"name": "Mastermind",
+					"build": "DEX, INT"
+				},
+				{
+					"name": "Swashbuckler",
+					"build": "DEX, CHA"
+				}
+			]
+		},
+		{
+			"class": "Sorcerer",
+			"subclasses": [{
+					"name": "Storm Sorcery",
+					"build": "CHA, CON"
+				}
+			]
+		},
+		{
+			"class": "Warlock",
+			"subclasses": [{
+					"name": "Undying",
+					"build": "CHA, CON"
+				}
+			]
+		},
+		{
+			"class": "Wizard",
+			"subclasses": [{
+					"name": "Bladeslinger",
+					"build": "INT, CON, DEX"
+				}
+			]
+		}
+	]
+}

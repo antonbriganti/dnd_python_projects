@@ -1,0 +1,429 @@
+{
+	"races": [{
+			"race": "Dwarf",
+			"subraces": [{
+					"name": "Hill",
+					"bonuses": {
+						"CON": 2,
+						"WIS": 1
+					}
+				},
+				{
+					"name": "Mountain",
+					"bonuses": {
+						"STR": 2,
+						"CON": 1
+					}
+				}
+			]
+		},
+		{
+			"race": "Elf",
+			"subraces": [{
+					"name": "High",
+					"bonuses": {
+						"DEX": 2,
+						"INT": 1
+					}
+				},
+				{
+					"name": "Wood",
+					"bonuses": {
+						"DEX": 2,
+						"WIS": 1
+					}
+				},
+				{
+					"name": "Dark",
+					"bonuses": {
+						"DEX": 2,
+						"CHA": 1
+					}
+				}
+			]
+		},
+		{
+			"race": "Halfling",
+			"subraces": [{
+					"name": "Lightfoot",
+					"bonuses": {
+						"DEX": 2,
+						"CHA": 1
+					}
+				},
+				{
+					"name": "Stout",
+					"bonuses": {
+						"DEX": 2,
+						"CON": 1
+					}
+				}
+			]
+		},
+		{
+			"race": "Human",
+			"subraces": [{
+				"name": "",
+				"bonuses": {
+					"STR": 1,
+					"DEX": 1,
+					"CON": 1,
+					"INT": 1,
+					"WIS": 1,
+					"CHA": 1
+				}
+			}]
+		},
+		{
+			"race": "Dragonborn",
+			"subraces": [{
+					"name": "Black",
+					"bonuses": {
+						"STR": 2,
+						"CHA": 1
+					}
+				},
+				{
+					"name": "Blue",
+					"bonuses": {
+						"STR": 2,
+						"CHA": 1
+					}
+				},
+				{
+					"name": "Brass",
+					"bonuses": {
+						"STR": 2,
+						"CHA": 1
+					}
+				},
+				{
+					"name": "Bronze",
+					"bonuses": {
+						"STR": 2,
+						"CHA": 1
+					}
+				},
+				{
+					"name": "Copper",
+					"bonuses": {
+						"STR": 2,
+						"CHA": 1
+					}
+				},
+				{
+					"name": "Black",
+					"bonuses": {
+						"STR": 2,
+						"CHA": 1
+					}
+				},
+				{
+					"name": "Black",
+					"bonuses": {
+						"STR": 2,
+						"CHA": 1
+					}
+				},
+				{
+					"name": "Gold",
+					"bonuses": {
+						"STR": 2,
+						"CHA": 1
+					}
+				},
+				{
+					"name": "Green",
+					"bonuses": {
+						"STR": 2,
+						"CHA": 1
+					}
+				},
+				{
+					"name": "Red",
+					"bonuses": {
+						"STR": 2,
+						"CHA": 1
+					}
+				},
+				{
+					"name": "White",
+					"bonuses": {
+						"STR": 2,
+						"CHA": 1
+					}
+				},
+				{
+					"name": "Silver",
+					"bonuses": {
+						"STR": 2,
+						"CHA": 1
+					}
+				}
+			]
+		},
+		{
+			"race": "Gnome",
+			"subraces": [{
+					"name": "Forest",
+					"bonuses": {
+						"DEX": 1,
+						"INT": 2
+					}
+				},
+				{
+					"name": "Rock",
+					"bonuses": {
+						"INT": 2,
+						"CON": 1
+					}
+				}
+			]
+		},
+		{
+			"race": "Half Elf",
+			"subraces": [{
+				"name": "",
+				"bonuses": {
+					"CHA": 2
+				}
+			}]
+		},
+		{
+			"race": "Half Orc",
+			"subraces": [{
+				"name": "",
+				"bonuses": {
+					"STR": 2,
+					"CON": 1
+				}
+			}]
+		},
+		{
+			"race": "Tiefling",
+			"subraces": [{
+				"name": "",
+				"bonuses": {
+					"INT": 1,
+					"CHA": 2
+				}
+			}]
+		}
+	],
+	"classes": [{
+			"class": "Barbarian",
+			"subclasses": [{
+					"name": "Berserker",
+					"build": "STR, CON"
+				},
+				{
+					"name": "Totem (Bear)",
+					"build": "STR, CON"
+				},
+				{
+					"name": "Totem (Eagle)",
+					"build": "STR, CON"
+				},
+				{
+					"name": "Totem (Wolf)",
+					"build": "STR, CON"
+				}
+			]
+		},
+		{
+			"class": "Bard",
+			"subclasses": [{
+					"name": "College of Lore",
+					"build": "CHA, DEX"
+				},
+				{
+					"name": "College of Valor",
+					"build": "CHA, DEX"
+				}
+			]
+		},
+		{
+			"class": "Cleric",
+			"subclasses": [{
+					"name": "Knowledge",
+					"build": "WIS, CON, STR"
+				},
+				{
+					"name": "Life",
+					"build": "WIS, CON, STR"
+				},
+				{
+					"name": "Light",
+					"build": "WIS, CON, STR"
+				},
+				{
+					"name": "Nature",
+					"build": "WIS, CON, STR"
+				},
+				{
+					"name": "Tempest",
+					"build": "WIS, CON, STR"
+				},
+				{
+					"name": "Trickery",
+					"build": "WIS, CON, STR"
+				},
+				{
+					"name": "War",
+					"build": "WIS, CON, STR"
+				}
+			]
+		},
+		{
+			"class": "Druid",
+			"subclasses": [{
+					"name": "Circle of the Land",
+					"build": "WIS, CON"
+				},
+				{
+					"name": "Circle of the Moon",
+					"build": "WIS, CON"
+				}
+			]
+		},
+		{
+			"class": "Fighter",
+			"subclasses": [{
+					"name": "Champion",
+					"build": "STR, CON, DEX"
+				},
+				{
+					"name": "Battle Master",
+					"build": "STR, CON, DEX"
+				},
+				{
+					"name": "Eldritch Knight",
+					"build": "STR, INT, CON, DEX"
+				}
+			]
+		},
+		{
+			"class": "Monk",
+			"subclasses": [{
+					"name": "Way of the Open Hand",
+					"build": "DEX, WIS"
+				},
+				{
+					"name": "Way of the Shadow",
+					"build": "DEX, WIS"
+				},
+				{
+					"name": "Way of the Four Elements",
+					"build": "DEX, WIS"
+				}
+			]
+		},
+		{
+			"class": "Paladin",
+			"subclasses": [{
+					"name": "Oath of Devotion",
+					"build": "STR, CHA"
+				},
+				{
+					"name": "Oath of the Ancients",
+					"build": "STR, CHA"
+				},
+				{
+					"name": "Oath of Vengeance",
+					"build": "STR, CHA"
+				}
+			]
+		},
+		{
+			"class": "Ranger",
+			"subclasses": [{
+					"name": "Hunter",
+					"build": "DEX, WIS"
+				},
+				{
+					"name": "Beast Master",
+					"build": "DEX, WIS"
+				}
+			]
+		}, {
+			"class": "Rogue",
+			"subclasses": [{
+					"name": "Thief",
+					"build": "DEX"
+				},
+				{
+					"name": "Assassin",
+					"build": "DEX, CHA"
+				},
+				{
+					"name": "Arcane Trickster",
+					"build": "DEX, INT"
+				}
+			]
+		},
+		{
+			"class": "Sorcerer",
+			"subclasses": [{
+					"name": "Draconic Bloodline",
+					"build": "CHA, CON"
+				},
+				{
+					"name": "Wild Magic",
+					"build": "CHA, CON"
+				}
+			]
+		},
+		{
+			"class": "Warlock",
+			"subclasses": [{
+					"name": "Archfey",
+					"build": "CHA, CON"
+				},
+				{
+					"name": "Fiend",
+					"build": "CHA, CON"
+				},
+				{
+					"name": "Great Old One",
+					"build": "CHA, CON"
+				}
+			]
+		},
+		{
+			"class": "Wizard",
+			"subclasses": [{
+					"name": "Abjuration",
+					"build": "INT, CON, DEX"
+				},
+				{
+					"name": "Conjuration",
+					"build": "INT, CON, DEX"
+				},
+				{
+					"name": "Divination",
+					"build": "INT, CON, DEX"
+				},
+				{
+					"name": "Enchantment",
+					"build": "INT, CON, DEX"
+				},
+				{
+					"name": "Evocation",
+					"build": "INT, CON, DEX"
+				},
+				{
+					"name": "Illusion",
+					"build": "INT, CON, DEX"
+				},
+				{
+					"name": "Necromancy",
+					"build": "INT, CON, DEX"
+				},
+				{
+					"name": "Transmutation",
+					"build": "INT, CON, DEX"
+				}
+			]
+		}
+	]
+}
