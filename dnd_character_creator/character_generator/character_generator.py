@@ -1,6 +1,8 @@
 from random import *
 import json_reader
 import text_ui_helper, stat_roller
+
+
 class Character:
     def __init__(self, optimise, expansion, homebrew, usermade):
         self.name = None
@@ -30,40 +32,35 @@ class Character:
         subrace_bonus.append((stat, 1))
         return subrace_bonus
 
+    def expand_dict(self, dictionary, data):
+        for key in data:
+            if key not in dictionary:
+                dictionary[key] = data[key]
+            else:
+                for content in data[key]:
+                    dictionary[key].append(content)
+        return dictionary
+
     def set_races(self):
         race_list = json_reader.get_races('data/phb_data.json')
         if self.expansion:
             expansion_races = json_reader.get_races("data/expansion_data.json") # expansion data
-            for race in expansion_races:
-                if race not in race_list:
-                    race_list[race] = expansion_races[race]
-                else:
-                    for subrace in expansion_races[race]:
-                        race_list[race].append(subrace)
+            race_list = self.expand_dict(race_list, expansion_races)
 
         return race_list
 
     def set_classes(self):
         class_list = json_reader.get_classes('data/phb_data.json')
-
         if self.expansion:
             expansion_classes = json_reader.get_classes("data/expansion_data.json")
-            for p_class in expansion_classes:
-                if p_class not in class_list:
-                    class_list[p_class] = expansion_classes[p_class]
-                else:
-                    for subclass in expansion_classes[p_class]:
-                        class_list[p_class].append(subclass)
+            class_list = self.expand_dict(class_list, expansion_classes)
 
         if self.homebrew:
             # homebrew data
             homebrew_classes = json_reader.get_classes("data/homebrew_data.json")
-            for p_class in homebrew_classes:
-                if p_class not in class_list:
-                    class_list[p_class] = homebrew_classes[p_class]
-                else:
-                    for subclass in homebrew_classes[p_class]:
-                        class_list[p_class].append(subclass)
+            class_list = self.expand_dict(class_list, homebrew_classes)
+
+        return class_list
 
     def char_generator(self):
         race_list = self.set_races()
