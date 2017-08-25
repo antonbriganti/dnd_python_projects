@@ -1,6 +1,7 @@
+#!/usr/local/bin/python3.6
 from random import *
-import json_reader
-import text_ui_helper, stat_roller
+import json
+import json_reader, text_ui_helper, stat_roller
 
 
 class Character:
@@ -13,10 +14,8 @@ class Character:
         self.background = None
         self.level = 3
 
-        self.optimise = optimise
-        self.expansion = expansion
-        self.homebrew = homebrew
-        self.usermade = usermade
+        self.runtime_flags = {'optimise': optimise, 'expansion': expansion,
+                            'homebrew': homebrew, 'usermade': usermade}
 
         self.ability_list = {
                     'STR' : 0,
@@ -42,22 +41,22 @@ class Character:
         return dictionary
 
     def set_races(self):
-        race_list = json_reader.get_races('data/phb_data.json')
-        if self.expansion:
-            expansion_races = json_reader.get_races("data/expansion_data.json") # expansion data
+        race_list = json_reader.get_races('srd_data/phb_data.json')
+        if self.runtime_flags['expansion']:
+            expansion_races = json_reader.get_races("srd_data/expansion_data.json") # expansion data
             race_list = self.expand_dict(race_list, expansion_races)
 
         return race_list
 
     def set_classes(self):
-        class_list = json_reader.get_classes('data/phb_data.json')
-        if self.expansion:
-            expansion_classes = json_reader.get_classes("data/expansion_data.json")
+        class_list = json_reader.get_classes('srd_data/phb_data.json')
+        if self.runtime_flags['expansion']:
+            expansion_classes = json_reader.get_classes("srd_data/expansion_data.json")
             class_list = self.expand_dict(class_list, expansion_classes)
 
-        if self.homebrew:
+        if self.runtime_flags['homebrew']:
             # homebrew data
-            homebrew_classes = json_reader.get_classes("data/homebrew_data.json")
+            homebrew_classes = json_reader.get_classes("srd_data/homebrew_data.json")
             class_list = self.expand_dict(class_list, homebrew_classes)
 
         return class_list
@@ -68,7 +67,7 @@ class Character:
         background_list = ['Acolyte', 'Charlatan', 'Criminal', 'Entertainer', 'Folk Hero', 'Guild Artisan', 'Hermit',
                            'Noble', 'Outlander', 'Sage', 'Sailor', 'Soldier', 'Urchin']
 
-        if self.usermade:
+        if self.runtime_flags['usermade']:
             # select of race/subrace
             user_input = text_ui_helper.input_loop(sorted(list(race_list)), 'Choose a race by index: ')
             char_race = sorted(list(race_list))[user_input]
@@ -102,7 +101,7 @@ class Character:
             char_background = choice(background_list)
 
         # sorted rolls
-        if self.optimise:
+        if self.runtime_flags['optimise']:
             #iterates through build, adds best roll to given index
             unallocated_points = stat_roller.sorted_rolls()
             for ability in build:
@@ -132,7 +131,7 @@ class Character:
         self.m_class = (char_class)
 
         #self.name = input('What is their name? ')
-        self.print_character()
+        #self.print_character()
 
     def print_character(self):
             print()
@@ -153,8 +152,16 @@ class Character:
             input('Press Enter to continue. ')
             print()
 
+    def generate_json(self):
+        payload = self.__dict__
+        payload.pop('runtime_flags')
+
+        return json.dumps(payload, indent=4)
 
 
-#optimise, expansion, homebrew, usermade
-char = Character(True, True, True, True)
-char.char_generator()
+if __name__ == "__main__":
+    #optimise, expansion, homebrew, usermade
+    char = Character(True, True, True, True)
+    char.char_generator()
+    #char.print_character()
+    #print(char.generate_json())
