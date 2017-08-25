@@ -155,8 +155,7 @@ class Character:
     def generate_json(self):
         payload = self.__dict__
         payload.pop('runtime_flags')
-
-        return json.dumps(payload, indent=4)
+        return json.dumps(payload)
 
 
 if __name__ == "__main__":
