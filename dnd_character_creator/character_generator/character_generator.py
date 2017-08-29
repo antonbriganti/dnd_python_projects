@@ -44,6 +44,9 @@ class Character:
     def generate_json(self):
         return json.dumps(self.__dict__)
 
+    def generate_dict(self):
+        return self.__dict__
+
 class CharacterCreator:
     def __init__(self, optimise, expansion, homebrew, usermade):
         self.character = Character()
@@ -85,6 +88,14 @@ class CharacterCreator:
 
         return class_list
 
+    def set_backgrounds(self):
+        background_list = json_reader.get_backgrounds('srd_data/phb_data.json')
+        if self.runtime_flags['expansion']:
+            expansion_backgrounds = json_reader.get_backgrounds("srd_data/expansion_data.json")
+            background_list = background_list + expansion_backgrounds
+
+        return background_list
+
     def set_optimised_stats(self, build):
         ability_list = {'STR' : 0, 'DEX' : 0, 'CON' : 0, 'INT' : 0, 'WIS' : 0, 'CHA' : 0}
 
@@ -104,8 +115,7 @@ class CharacterCreator:
     def char_generator(self):
         race_list = self.set_races()
         class_list = self.set_classes()
-        background_list = ['Acolyte', 'Charlatan', 'Criminal', 'Entertainer', 'Folk Hero', 'Guild Artisan', 'Hermit',
-                           'Noble', 'Outlander', 'Sage', 'Sailor', 'Soldier', 'Urchin']
+        background_list = self.set_backgrounds()
 
         if self.runtime_flags['usermade']:
             # select of race/subrace
@@ -166,7 +176,6 @@ class CharacterCreator:
 
 if __name__ == "__main__":
     #optimise, expansion, homebrew, usermade
-    creator = CharacterCreator(True, True, True, False)
+    creator = CharacterCreator(True, True, True, True)
     char = creator.char_generator()
-    #char.print_character()
-    print(char.generate_json())
+    print(char.generate_dict())
