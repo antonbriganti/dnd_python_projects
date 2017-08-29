@@ -5,4 +5,4 @@ import pprint, json
 def lambda_handler(json_input, context):
     creator = CharacterCreator(True, True, True, False)
     char = creator.char_generator()
-    return(char.generate_json())
+    return(char.generate_dict())
