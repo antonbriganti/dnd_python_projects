@@ -1,8 +1,7 @@
 #!/usr/local/bin/python3.6
-from random import *
-import json
-import json_reader, text_ui_helper, stat_roller
 
+import json, random
+import json_reader, text_ui_helper, stat_roller
 
 class Character:
     def __init__(self):
@@ -22,7 +21,7 @@ class Character:
                     'WIS' : 0,
                     'CHA' : 0
                     }
-                    
+
     def print_character(self):
             print()
             #print(self.name)
@@ -39,7 +38,7 @@ class Character:
             print('INT: ' + str(self.ability_list["INT"]))
             print('WIS: ' + str(self.ability_list["WIS"]))
             print('CHA: ' + str(self.ability_list["CHA"]))
-            input('Press Enter to continue. ')
+            #input('Press Enter to continue. ')
             print()
 
     def generate_json(self):
@@ -50,9 +49,9 @@ class CharacterCreator:
         self.character = Character()
         self.runtime_flags = {'optimise': optimise, 'expansion': expansion,
                             'homebrew': homebrew, 'usermade': usermade}
-                            
+
     def set_extra_racial(self, subrace_bonus):
-        stat = choice(list(set(self.character.ability_list.keys()) - set(subrace_bonus)))
+        stat = random.choice(list(set(self.character.ability_list.keys()) - set(subrace_bonus)))
         subrace_bonus.append((stat, 1))
         return subrace_bonus
 
@@ -85,6 +84,22 @@ class CharacterCreator:
             class_list = self.expand_dict(class_list, homebrew_classes)
 
         return class_list
+
+    def set_optimised_stats(self, build):
+        ability_list = {'STR' : 0, 'DEX' : 0, 'CON' : 0, 'INT' : 0, 'WIS' : 0, 'CHA' : 0}
+
+        #iterates through build, adds best roll to given index
+        unallocated_points = stat_roller.sorted_rolls()
+        for ability in build:
+            ability_list[ability] += unallocated_points.pop()
+
+        #adds remaining rolls to ability scores randomly
+        remaining_abilities = list(set(ability_list.keys()) - set(build))
+        random.shuffle(remaining_abilities)
+        for stat in remaining_abilities:
+            ability_list[stat] += unallocated_points.pop()
+
+        return ability_list
 
     def char_generator(self):
         race_list = self.set_races()
@@ -119,25 +134,15 @@ class CharacterCreator:
 
         else:
             # random select of race/subrace
-            char_race = choice(list(race_list.keys())) # randomly choose from dictionary keys as race
-            char_subrace, racial_bonus = choice(race_list[char_race]) # randomly choose subrace and build
-            char_class = choice(list(class_list.keys()))
-            char_subclass, build = choice(class_list[char_class])
-            char_background = choice(background_list)
+            char_race = random.choice(list(race_list.keys())) # randomly choose from dictionary keys as race
+            char_subrace, racial_bonus = random.choice(race_list[char_race]) # randomly choose subrace and build
+            char_class = random.choice(list(class_list.keys()))
+            char_subclass, build = random.choice(class_list[char_class])
+            char_background = random.choice(background_list)
 
-        # sorted rolls
-        
+        #set stats
         if self.runtime_flags['optimise']:
-            #iterates through build, adds best roll to given index
-            unallocated_points = stat_roller.sorted_rolls()
-            for ability in build:
-                self.character.ability_list[ability] += unallocated_points.pop()
-
-            #adds remaining rolls to ability scores randomly
-            remaining_abilities = list(set(self.character.ability_list.keys()) - set(build))
-            shuffle(remaining_abilities)
-            for stat in remaining_abilities:
-                self.character.ability_list[stat] += unallocated_points.pop()
+            self.character.ability_list = self.set_optimised_stats(build)
         else:
             roll = stat_roller.sorted_rolls()
             for key in self.character.ability_list.keys(): self.character.ability_list[key] += roll.pop()
@@ -155,13 +160,13 @@ class CharacterCreator:
         self.character.background = char_background
         self.character.s_class = (char_subclass)
         self.character.m_class = (char_class)
-        
+
         return self.character
-    
+
 
 if __name__ == "__main__":
     #optimise, expansion, homebrew, usermade
     creator = CharacterCreator(True, True, True, False)
     char = creator.char_generator()
     #char.print_character()
-    #print(char.generate_json())
+    print(char.generate_json())
