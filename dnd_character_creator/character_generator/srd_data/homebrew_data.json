@@ -1,5 +1,13 @@
 {
-	"classes": [{
+	"classes": [
+		{
+		"class": "Barbarian",
+		"subclasses": [{
+			"name": "Juggernaut",
+			"build": "STR, CON"
+		}]
+		},
+		{
 			"class": "Bard",
 			"subclasses": [{
 				"name": "College of the Maestro",
@@ -7,10 +15,31 @@
 			}]
 		},
 		{
+			"class": "Cleric",
+			"subclasses": [{
+				"name": "Blood",
+				"build": "WIS, CON, STR"
+			}]
+		},
+		{
 			"class": "Fighter",
 			"subclasses": [{
 				"name": "Gunslinger",
 				"build": "DEX, INT"
+			}]
+		},
+		{
+			"class": "Monk",
+			"subclasses": [{
+				"name": "Way of the Cobalt Soul",
+				"build": "DEX, WIS, INT"
+			}]
+		},
+		{
+			"class": "Sorcerer",
+			"subclasses": [{
+				"name": "Runechild",
+				"build": "CHA, CON"
 			}]
 		},
 		{

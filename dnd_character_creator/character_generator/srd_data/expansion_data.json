@@ -188,36 +188,36 @@
 				}
 			}]
 		},
-    {
-  			"race": "Dwarf",
-  			"subraces": [{
-  				"name": "Duergar",
-  				"bonuses": {
-  					"STR": 1,
-  					"CON": 2
-  				}
-  			}]
-  		},
-  		{
-  			"race": "Gnome",
-  			"subraces": [{
-  				"name": "Deep",
-  				"bonuses": {
-  					"DEX": 1,
-  					"CON": 2
-  				}
-  			}]
-  		},
-  		{
-  			"race": "Tiefling",
-  			"subraces": [{
-  				"name": "Feral",
-  				"bonuses": {
-  					"DEX": 2,
-  					"INT": 1
-  				}
-  			}]
-  		}
+		{
+			"race": "Dwarf",
+			"subraces": [{
+				"name": "Duergar",
+				"bonuses": {
+					"STR": 1,
+					"CON": 2
+				}
+			}]
+		},
+		{
+			"race": "Gnome",
+			"subraces": [{
+				"name": "Deep",
+				"bonuses": {
+					"DEX": 1,
+					"CON": 2
+				}
+			}]
+		},
+		{
+			"race": "Tiefling",
+			"subraces": [{
+				"name": "Feral",
+				"bonuses": {
+					"DEX": 2,
+					"INT": 1
+				}
+			}]
+		}
 	],
 	"classes": [{
 			"class": "Barbarian",
@@ -238,18 +238,16 @@
 		{
 			"class": "Cleric",
 			"subclasses": [{
-					"name": "Arcana",
-					"build": "WIS, CON, STR"
-				}
-			]
+				"name": "Arcana",
+				"build": "WIS, CON, STR"
+			}]
 		},
 		{
 			"class": "Fighter",
 			"subclasses": [{
-					"name": "Purple Dragon Knight",
-					"build": "STR, CON, DEX"
-				}
-			]
+				"name": "Purple Dragon Knight",
+				"build": "STR, CON, DEX"
+			}]
 		},
 		{
 			"class": "Monk",
@@ -266,10 +264,9 @@
 		{
 			"class": "Paladin",
 			"subclasses": [{
-					"name": "Oath of the Crown",
-					"build": "STR, CHA"
-				}
-			]
+				"name": "Oath of the Crown",
+				"build": "STR, CHA"
+			}]
 		},
 		{
 			"class": "Rogue",
@@ -286,26 +283,60 @@
 		{
 			"class": "Sorcerer",
 			"subclasses": [{
-					"name": "Storm Sorcery",
-					"build": "CHA, CON"
-				}
-			]
+				"name": "Storm Sorcery",
+				"build": "CHA, CON"
+			}]
 		},
 		{
 			"class": "Warlock",
 			"subclasses": [{
-					"name": "Undying",
-					"build": "CHA, CON"
-				}
-			]
+				"name": "Undying",
+				"build": "CHA, CON"
+			}]
 		},
 		{
 			"class": "Wizard",
 			"subclasses": [{
-					"name": "Bladeslinger",
-					"build": "INT, CON, DEX"
-				}
-			]
+				"name": "Bladeslinger",
+				"build": "INT, CON, DEX"
+			}]
+		}
+	],
+	"backgrounds": [{
+			"name": "City Watch"
+		},
+		{
+			"name": "Clan Crafter"
+		},
+		{
+			"name": "Cloister Scholar"
+		},
+		{
+			"name": "Courtier"
+		},
+		{
+			"name": "Faction Agent"
+		},
+		{
+			"name": "Far Traveler"
+		},
+		{
+			"name": "Inheritor"
+		},
+		{
+			"name": "Knight of the Order"
+		},
+		{
+			"name": "Mercenary Veteran"
+		},
+		{
+			"name": "Urban Bounty Hunter"
+		},
+		{
+			"name": "Uthgardt Tribe Member"
+		},
+		{
+			"name": "Waterdhavian Noble"
 		}
 	]
 }

@@ -425,5 +425,45 @@
 				}
 			]
 		}
+	],
+	"backgrounds": [{
+			"name": "Acolyte"
+		},
+		{
+			"name": "Charlatan"
+		},
+		{
+			"name": "Criminal"
+		},
+		{
+			"name": "Entertainer"
+		},
+		{
+			"name": "Folk Hero"
+		},
+		{
+			"name": "Guild Artisan"
+		},
+		{
+			"name": "Hermit"
+		},
+		{
+			"name": "Noble"
+		},
+		{
+			"name": "Outlander"
+		},
+		{
+			"name": "Sage"
+		},
+		{
+			"name": "Sailor"
+		},
+		{
+			"name": "Soldier"
+		},
+		{
+			"name": "Urchin"
+		}
 	]
 }
