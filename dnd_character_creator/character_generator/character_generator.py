@@ -5,7 +5,7 @@ import json_reader, text_ui_helper, stat_roller
 
 
 class Character:
-    def __init__(self, optimise, expansion, homebrew, usermade):
+    def __init__(self):
         self.name = None
         self.m_race = None
         self.s_race = None
@@ -13,9 +13,6 @@ class Character:
         self.s_class = None
         self.background = None
         self.level = 3
-
-        self.runtime_flags = {'optimise': optimise, 'expansion': expansion,
-                            'homebrew': homebrew, 'usermade': usermade}
 
         self.ability_list = {
                     'STR' : 0,
@@ -25,9 +22,37 @@ class Character:
                     'WIS' : 0,
                     'CHA' : 0
                     }
+                    
+    def print_character(self):
+            print()
+            #print(self.name)
+            if self.s_race != '':
+                print(self.s_race, self.m_race)
+            else:
+                print(self.m_race)
+            print(self.s_class, self.m_class)
+            print(self.background)
+            print('Level: ' + str(self.level))
+            print('STR: ' + str(self.ability_list["STR"]))
+            print('DEX: ' + str(self.ability_list["DEX"]))
+            print('CON: ' + str(self.ability_list["CON"]))
+            print('INT: ' + str(self.ability_list["INT"]))
+            print('WIS: ' + str(self.ability_list["WIS"]))
+            print('CHA: ' + str(self.ability_list["CHA"]))
+            input('Press Enter to continue. ')
+            print()
 
+    def generate_json(self):
+        return json.dumps(self.__dict__)
+
+class CharacterCreator:
+    def __init__(self, optimise, expansion, homebrew, usermade):
+        self.character = Character()
+        self.runtime_flags = {'optimise': optimise, 'expansion': expansion,
+                            'homebrew': homebrew, 'usermade': usermade}
+                            
     def set_extra_racial(self, subrace_bonus):
-        stat = choice(list(set(self.ability_list.keys()) - set(subrace_bonus)))
+        stat = choice(list(set(self.character.ability_list.keys()) - set(subrace_bonus)))
         subrace_bonus.append((stat, 1))
         return subrace_bonus
 
@@ -101,20 +126,21 @@ class Character:
             char_background = choice(background_list)
 
         # sorted rolls
+        
         if self.runtime_flags['optimise']:
             #iterates through build, adds best roll to given index
             unallocated_points = stat_roller.sorted_rolls()
             for ability in build:
-                self.ability_list[ability] += unallocated_points.pop()
+                self.character.ability_list[ability] += unallocated_points.pop()
 
             #adds remaining rolls to ability scores randomly
-            remaining_abilities = list(set(self.ability_list.keys()) - set(build))
+            remaining_abilities = list(set(self.character.ability_list.keys()) - set(build))
             shuffle(remaining_abilities)
             for stat in remaining_abilities:
-                self.ability_list[stat] += unallocated_points.pop()
+                self.character.ability_list[stat] += unallocated_points.pop()
         else:
             roll = stat_roller.sorted_rolls()
-            for key in self.ability_list.keys(): self.ability_list[key] += roll.pop()
+            for key in self.character.ability_list.keys(): self.character.ability_list[key] += roll.pop()
 
         # racial bonus
         if char_race == "Half Elf":
@@ -122,45 +148,20 @@ class Character:
                 racial_bonus = self.set_extra_racial(racial_bonus) # set random extra ability
 
         for bonus in racial_bonus:
-            self.ability_list[bonus[0]] += bonus[1]
+            self.character.ability_list[bonus[0]] += bonus[1]
 
-        self.s_race = char_subrace
-        self.m_race = char_race
-        self.background = char_background
-        self.s_class = (char_subclass)
-        self.m_class = (char_class)
-
-        #self.name = input('What is their name? ')
-        #self.print_character()
-
-    def print_character(self):
-            print()
-            #print(self.name)
-            if self.s_race != '':
-                print(self.s_race, self.m_race)
-            else:
-                print(self.m_race)
-            print(self.s_class, self.m_class)
-            print(self.background)
-            print('Level: ' + str(self.level))
-            print('STR: ' + str(self.ability_list["STR"]))
-            print('DEX: ' + str(self.ability_list["DEX"]))
-            print('CON: ' + str(self.ability_list["CON"]))
-            print('INT: ' + str(self.ability_list["INT"]))
-            print('WIS: ' + str(self.ability_list["WIS"]))
-            print('CHA: ' + str(self.ability_list["CHA"]))
-            input('Press Enter to continue. ')
-            print()
-
-    def generate_json(self):
-        payload = self.__dict__
-        payload.pop('runtime_flags')
-        return json.dumps(payload)
-
+        self.character.s_race = char_subrace
+        self.character.m_race = char_race
+        self.character.background = char_background
+        self.character.s_class = (char_subclass)
+        self.character.m_class = (char_class)
+        
+        return self.character
+    
 
 if __name__ == "__main__":
     #optimise, expansion, homebrew, usermade
-    char = Character(True, True, True, True)
-    char.char_generator()
+    creator = CharacterCreator(True, True, True, False)
+    char = creator.char_generator()
     #char.print_character()
     #print(char.generate_json())
