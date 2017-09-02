@@ -303,40 +303,52 @@
 		}
 	],
 	"backgrounds": [{
-			"name": "City Watch"
+			"name": "City Watch",
+			"skill_proficiencies": "Athletics, Insight"
 		},
 		{
-			"name": "Clan Crafter"
+			"name": "Clan Crafter",
+			"skill_proficiencies": "History, Insight"
 		},
 		{
-			"name": "Cloister Scholar"
+			"name": "Cloistered Scholar",
+			"skill_proficiencies": "History, Arcana"
 		},
 		{
-			"name": "Courtier"
+			"name": "Courtier",
+			"skill_proficiencies": "Insight, Persuasion"
 		},
 		{
-			"name": "Faction Agent"
+			"name": "Faction Agent",
+			"skill_proficiencies": "Insight, Persuasion"
 		},
 		{
-			"name": "Far Traveler"
+			"name": "Far Traveler",
+			"skill_proficiencies": "Insight, Perception"
 		},
 		{
-			"name": "Inheritor"
+			"name": "Inheritor",
+			"skill_proficiencies": "Survival, Religion"
 		},
 		{
-			"name": "Knight of the Order"
+			"name": "Knight of the Order",
+			"skill_proficiencies": "Persuasion, Religion"
 		},
 		{
-			"name": "Mercenary Veteran"
+			"name": "Mercenary Veteran",
+			"skill_proficiencies": "Athletics, Persuasion"
 		},
 		{
-			"name": "Urban Bounty Hunter"
+			"name": "Urban Bounty Hunter",
+			"skill_proficiencies": "Insight, Persuasion"
 		},
 		{
-			"name": "Uthgardt Tribe Member"
+			"name": "Uthgardt Tribe Member",
+			"skill_proficiencies": "Athletics, Survival"
 		},
 		{
-			"name": "Waterdhavian Noble"
+			"name": "Waterdhavian Noble",
+			"skill_proficiencies": "History, Persuasion"
 		}
 	]
 }

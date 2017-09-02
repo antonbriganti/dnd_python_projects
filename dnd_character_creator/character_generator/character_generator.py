@@ -95,7 +95,7 @@ class CharacterCreator:
         background_list = json_reader.get_backgrounds('srd_data/phb_data.json')
         if self.runtime_flags['expansion']:
             expansion_backgrounds = json_reader.get_backgrounds("srd_data/expansion_data.json")
-            background_list = background_list + expansion_backgrounds
+            background_list = self.expand_dict(background_list, expansion_backgrounds)
 
         return background_list
 
@@ -113,7 +113,7 @@ class CharacterCreator:
         for stat in remaining_abilities:
             ability_list[stat] += unallocated_points.pop()
 
-        return ability_list        
+        return ability_list
 
     def set_random_class_skills(self, class_skill_data):
         return(random.sample(set(class_skill_data["skills"]), class_skill_data["count"]))
@@ -189,6 +189,6 @@ class CharacterCreator:
 
 if __name__ == "__main__":
     #optimise, expansion, homebrew, usermade
-    creator = CharacterCreator(True, False, False, False)
+    creator = CharacterCreator(True, True, True, False)
     char = creator.char_generator()
     char.print_character()
