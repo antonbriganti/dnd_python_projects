@@ -1,49 +1,49 @@
 {
 	"classes": [
 		{
-		"class": "Barbarian",
+		"class_name": "Barbarian",
 		"subclasses": [{
 			"name": "Juggernaut",
 			"build": "STR, CON"
 		}]
 		},
 		{
-			"class": "Bard",
+			"class_name": "Bard",
 			"subclasses": [{
 				"name": "College of the Maestro",
 				"build": "CHA, DEX"
 			}]
 		},
 		{
-			"class": "Cleric",
+			"class_name": "Cleric",
 			"subclasses": [{
 				"name": "Blood",
 				"build": "WIS, CON, STR"
 			}]
 		},
 		{
-			"class": "Fighter",
+			"class_name": "Fighter",
 			"subclasses": [{
 				"name": "Gunslinger",
 				"build": "DEX, INT"
 			}]
 		},
 		{
-			"class": "Monk",
+			"class_name": "Monk",
 			"subclasses": [{
 				"name": "Way of the Cobalt Soul",
 				"build": "DEX, WIS, INT"
 			}]
 		},
 		{
-			"class": "Sorcerer",
+			"class_name": "Sorcerer",
 			"subclasses": [{
 				"name": "Runechild",
 				"build": "CHA, CON"
 			}]
 		},
 		{
-			"class": "Blood Hunter",
+			"class_name": "Blood Hunter",
 			"subclasses": [{
 					"name": "Order of the Mutant",
 					"build": "STR, WIS"

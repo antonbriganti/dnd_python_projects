@@ -58,14 +58,15 @@ class CharacterCreator:
         subrace_bonus.append((stat, 1))
         return subrace_bonus
 
-    def expand_dict(self, dictionary, data):
-        for key in data:
-            if key not in dictionary:
-                dictionary[key] = data[key]
+    def expand_dict(self, current_dict, new_dict):
+        for item in new_dict:
+            if item not in current_dict:
+                current_dict[item] = new_dict[item]
             else:
-                for content in data[key]:
-                    dictionary[key].append(content)
-        return dictionary
+                for key, content in new_dict[item].items():
+                    # merges conflicting items into one entry
+                    current_dict[item][key] = {**current_dict[item][key], **content}
+        return current_dict
 
     def set_races(self):
         race_list = json_reader.get_races('srd_data/phb_data.json')
@@ -127,6 +128,7 @@ class CharacterCreator:
                 char_subrace, racial_bonus = race_list[char_race][0]
             else:
                 user_input = text_ui_helper.input_loop(race_list[char_race], 'Choose a subrace by index: ')
+                print(user_input, race_list[char_race][user_input])
                 char_subrace, racial_bonus = race_list[char_race][user_input]
             print()
 
@@ -145,9 +147,11 @@ class CharacterCreator:
         else:
             # random select of race/subrace
             char_race = random.choice(list(race_list.keys())) # randomly choose from dictionary keys as race
-            char_subrace, racial_bonus = random.choice(race_list[char_race]) # randomly choose subrace and build
+            char_subrace, racial_bonus = random.choice(list(race_list[char_race]["subraces"].items())) # randomly choose subrace and build
+
             char_class = random.choice(list(class_list.keys()))
-            char_subclass, build = random.choice(class_list[char_class])
+            char_subclass, build = random.choice(list(class_list[char_class]["subclasses"].items()))
+
             char_background = random.choice(background_list)
 
         #set stats
@@ -176,6 +180,6 @@ class CharacterCreator:
 
 if __name__ == "__main__":
     #optimise, expansion, homebrew, usermade
-    creator = CharacterCreator(True, True, True, True)
+    creator = CharacterCreator(True, True, False, False)
     char = creator.char_generator()
-    print(char.generate_dict())
+    char.print_character()

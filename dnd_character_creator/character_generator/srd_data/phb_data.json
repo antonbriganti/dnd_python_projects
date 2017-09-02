@@ -1,6 +1,6 @@
 {
 	"races": [{
-			"race": "Dwarf",
+			"race_name": "Dwarf",
 			"subraces": [{
 					"name": "Hill",
 					"bonuses": {
@@ -18,7 +18,7 @@
 			]
 		},
 		{
-			"race": "Elf",
+			"race_name": "Elf",
 			"subraces": [{
 					"name": "High",
 					"bonuses": {
@@ -43,7 +43,7 @@
 			]
 		},
 		{
-			"race": "Halfling",
+			"race_name": "Halfling",
 			"subraces": [{
 					"name": "Lightfoot",
 					"bonuses": {
@@ -61,7 +61,7 @@
 			]
 		},
 		{
-			"race": "Human",
+			"race_name": "Human",
 			"subraces": [{
 				"name": "",
 				"bonuses": {
@@ -75,7 +75,7 @@
 			}]
 		},
 		{
-			"race": "Dragonborn",
+			"race_name": "Dragonborn",
 			"subraces": [{
 					"name": "Black",
 					"bonuses": {
@@ -163,7 +163,7 @@
 			]
 		},
 		{
-			"race": "Gnome",
+			"race_name": "Gnome",
 			"subraces": [{
 					"name": "Forest",
 					"bonuses": {
@@ -181,7 +181,7 @@
 			]
 		},
 		{
-			"race": "Half Elf",
+			"race_name": "Half Elf",
 			"subraces": [{
 				"name": "",
 				"bonuses": {
@@ -190,7 +190,7 @@
 			}]
 		},
 		{
-			"race": "Half Orc",
+			"race_name": "Half Orc",
 			"subraces": [{
 				"name": "",
 				"bonuses": {
@@ -200,7 +200,7 @@
 			}]
 		},
 		{
-			"race": "Tiefling",
+			"race_name": "Tiefling",
 			"subraces": [{
 				"name": "",
 				"bonuses": {
@@ -210,8 +210,9 @@
 			}]
 		}
 	],
-	"classes": [{
-			"class": "Barbarian",
+	"classes": [
+		{
+			"class_name": "Barbarian",
 			"subclasses": [{
 					"name": "Berserker",
 					"build": "STR, CON"
@@ -231,7 +232,7 @@
 			]
 		},
 		{
-			"class": "Bard",
+			"class_name": "Bard",
 			"subclasses": [{
 					"name": "College of Lore",
 					"build": "CHA, DEX"
@@ -243,7 +244,7 @@
 			]
 		},
 		{
-			"class": "Cleric",
+			"class_name": "Cleric",
 			"subclasses": [{
 					"name": "Knowledge",
 					"build": "WIS, CON, STR"
@@ -275,7 +276,7 @@
 			]
 		},
 		{
-			"class": "Druid",
+			"class_name": "Druid",
 			"subclasses": [{
 					"name": "Circle of the Land",
 					"build": "WIS, CON"
@@ -287,7 +288,7 @@
 			]
 		},
 		{
-			"class": "Fighter",
+			"class_name": "Fighter",
 			"subclasses": [{
 					"name": "Champion",
 					"build": "STR, CON, DEX"
@@ -303,7 +304,7 @@
 			]
 		},
 		{
-			"class": "Monk",
+			"class_name": "Monk",
 			"subclasses": [{
 					"name": "Way of the Open Hand",
 					"build": "DEX, WIS"
@@ -319,7 +320,7 @@
 			]
 		},
 		{
-			"class": "Paladin",
+			"class_name": "Paladin",
 			"subclasses": [{
 					"name": "Oath of Devotion",
 					"build": "STR, CHA"
@@ -335,7 +336,7 @@
 			]
 		},
 		{
-			"class": "Ranger",
+			"class_name": "Ranger",
 			"subclasses": [{
 					"name": "Hunter",
 					"build": "DEX, WIS"
@@ -345,8 +346,9 @@
 					"build": "DEX, WIS"
 				}
 			]
-		}, {
-			"class": "Rogue",
+		},
+		{
+			"class_name": "Rogue",
 			"subclasses": [{
 					"name": "Thief",
 					"build": "DEX"
@@ -362,7 +364,7 @@
 			]
 		},
 		{
-			"class": "Sorcerer",
+			"class_name": "Sorcerer",
 			"subclasses": [{
 					"name": "Draconic Bloodline",
 					"build": "CHA, CON"
@@ -374,7 +376,7 @@
 			]
 		},
 		{
-			"class": "Warlock",
+			"class_name": "Warlock",
 			"subclasses": [{
 					"name": "Archfey",
 					"build": "CHA, CON"
@@ -390,7 +392,7 @@
 			]
 		},
 		{
-			"class": "Wizard",
+			"class_name": "Wizard",
 			"subclasses": [{
 					"name": "Abjuration",
 					"build": "INT, CON, DEX"

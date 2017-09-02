@@ -1,6 +1,6 @@
 {
 	"races": [{
-			"race": "Aarakocra",
+			"race_name": "Aarakocra",
 			"subraces": [{
 				"name": "",
 				"bonuses": {
@@ -10,7 +10,7 @@
 			}]
 		},
 		{
-			"race": "Gensai",
+			"race_name": "Gensai",
 			"subraces": [{
 					"name": "Air",
 					"bonuses": {
@@ -42,7 +42,7 @@
 			]
 		},
 		{
-			"race": "Goliath",
+			"race_name": "Goliath",
 			"subraces": [{
 				"name": "",
 				"bonuses": {
@@ -52,7 +52,7 @@
 			}]
 		},
 		{
-			"race": "Aasimar",
+			"race_name": "Aasimar",
 			"subraces": [{
 					"name": "Protector",
 					"bonuses": {
@@ -77,7 +77,7 @@
 			]
 		},
 		{
-			"race": "Firbolg",
+			"race_name": "Firbolg",
 			"subraces": [{
 				"name": "",
 				"bonuses": {
@@ -87,7 +87,7 @@
 			}]
 		},
 		{
-			"race": "Kenku",
+			"race_name": "Kenku",
 			"subraces": [{
 				"name": "",
 				"bonuses": {
@@ -97,7 +97,7 @@
 			}]
 		},
 		{
-			"race": "Lizardfolk",
+			"race_name": "Lizardfolk",
 			"subraces": [{
 				"name": "",
 				"bonuses": {
@@ -107,7 +107,7 @@
 			}]
 		},
 		{
-			"race": "Tabaxi",
+			"race_name": "Tabaxi",
 			"subraces": [{
 				"name": "",
 				"bonuses": {
@@ -117,7 +117,7 @@
 			}]
 		},
 		{
-			"race": "Triton",
+			"race_name": "Triton",
 			"subraces": [{
 				"name": "",
 				"bonuses": {
@@ -128,7 +128,7 @@
 			}]
 		},
 		{
-			"race": "Bugbear",
+			"race_name": "Bugbear",
 			"subraces": [{
 				"name": "",
 				"bonuses": {
@@ -138,7 +138,7 @@
 			}]
 		},
 		{
-			"race": "Goblin",
+			"race_name": "Goblin",
 			"subraces": [{
 				"name": "",
 				"bonuses": {
@@ -148,7 +148,7 @@
 			}]
 		},
 		{
-			"race": "Hobgoblin",
+			"race_name": "Hobgoblin",
 			"subraces": [{
 				"name": "",
 				"bonuses": {
@@ -158,7 +158,7 @@
 			}]
 		},
 		{
-			"race": "Kobold",
+			"race_name": "Kobold",
 			"subraces": [{
 				"name": "",
 				"bonuses": {
@@ -168,7 +168,7 @@
 			}]
 		},
 		{
-			"race": "Orc",
+			"race_name": "Orc",
 			"subraces": [{
 				"name": "",
 				"bonuses": {
@@ -179,7 +179,7 @@
 			}]
 		},
 		{
-			"race": "Yuan Ti Pureblood",
+			"race_name": "Yuan Ti Pureblood",
 			"subraces": [{
 				"name": "",
 				"bonuses": {
@@ -189,7 +189,7 @@
 			}]
 		},
 		{
-			"race": "Dwarf",
+			"race_name": "Dwarf",
 			"subraces": [{
 				"name": "Duergar",
 				"bonuses": {
@@ -199,7 +199,7 @@
 			}]
 		},
 		{
-			"race": "Gnome",
+			"race_name": "Gnome",
 			"subraces": [{
 				"name": "Deep",
 				"bonuses": {
@@ -209,7 +209,7 @@
 			}]
 		},
 		{
-			"race": "Tiefling",
+			"race_name": "Tiefling",
 			"subraces": [{
 				"name": "Feral",
 				"bonuses": {
@@ -220,7 +220,7 @@
 		}
 	],
 	"classes": [{
-			"class": "Barbarian",
+			"class_name": "Barbarian",
 			"subclasses": [{
 					"name": "Battlerager",
 					"build": "STR, CON"
@@ -236,21 +236,21 @@
 			]
 		},
 		{
-			"class": "Cleric",
+			"class_name": "Cleric",
 			"subclasses": [{
 				"name": "Arcana",
 				"build": "WIS, CON, STR"
 			}]
 		},
 		{
-			"class": "Fighter",
+			"class_name": "Fighter",
 			"subclasses": [{
 				"name": "Purple Dragon Knight",
 				"build": "STR, CON, DEX"
 			}]
 		},
 		{
-			"class": "Monk",
+			"class_name": "Monk",
 			"subclasses": [{
 					"name": "Way of the Long Death",
 					"build": "DEX, WIS"
@@ -262,14 +262,14 @@
 			]
 		},
 		{
-			"class": "Paladin",
+			"class_name": "Paladin",
 			"subclasses": [{
 				"name": "Oath of the Crown",
 				"build": "STR, CHA"
 			}]
 		},
 		{
-			"class": "Rogue",
+			"class_name": "Rogue",
 			"subclasses": [{
 					"name": "Mastermind",
 					"build": "DEX, INT"
@@ -281,21 +281,21 @@
 			]
 		},
 		{
-			"class": "Sorcerer",
+			"class_name": "Sorcerer",
 			"subclasses": [{
 				"name": "Storm Sorcery",
 				"build": "CHA, CON"
 			}]
 		},
 		{
-			"class": "Warlock",
+			"class_name": "Warlock",
 			"subclasses": [{
 				"name": "Undying",
 				"build": "CHA, CON"
 			}]
 		},
 		{
-			"class": "Wizard",
+			"class_name": "Wizard",
 			"subclasses": [{
 				"name": "Bladeslinger",
 				"build": "INT, CON, DEX"
