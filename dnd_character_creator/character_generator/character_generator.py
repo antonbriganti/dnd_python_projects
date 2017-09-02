@@ -12,6 +12,7 @@ class Character:
         self.s_class = None
         self.background = None
         self.level = 3
+        self.skills = []
 
         self.ability_list = {
                     'STR' : 0,
@@ -38,6 +39,7 @@ class Character:
             print('INT: ' + str(self.ability_list["INT"]))
             print('WIS: ' + str(self.ability_list["WIS"]))
             print('CHA: ' + str(self.ability_list["CHA"]))
+            print('Skill Proficiencies: ' + ', '.join(self.skills))
             #input('Press Enter to continue. ')
             print()
 
@@ -111,7 +113,10 @@ class CharacterCreator:
         for stat in remaining_abilities:
             ability_list[stat] += unallocated_points.pop()
 
-        return ability_list
+        return ability_list        
+
+    def set_random_class_skills(self, class_skill_data):
+        return(random.sample(set(class_skill_data["skills"]), class_skill_data["count"]))
 
     def char_generator(self):
         race_list = self.set_races()
@@ -152,34 +157,38 @@ class CharacterCreator:
             char_class = random.choice(list(class_list.keys()))
             char_subclass, build = random.choice(list(class_list[char_class]["subclasses"].items()))
 
-            char_background = random.choice(background_list)
+            char_background = random.choice(list(background_list.keys()))
 
         #set stats
         if self.runtime_flags['optimise']:
             self.character.ability_list = self.set_optimised_stats(build)
         else:
             roll = stat_roller.sorted_rolls()
-            for key in self.character.ability_list.keys(): self.character.ability_list[key] += roll.pop()
+            for ability in self.character.ability_list.keys(): self.character.ability_list[ability] += roll.pop()
 
         # racial bonus
         if char_race == "Half Elf":
             for _ in range(2):
                 racial_bonus = self.set_extra_racial(racial_bonus) # set random extra ability
-
         for bonus in racial_bonus:
             self.character.ability_list[bonus[0]] += bonus[1]
+
+        #set proficiencies
+        skill_list = background_list[char_background]["skill_proficiencies"]
+        skill_list += self.set_random_class_skills(class_list[char_class]["skill_proficiencies"])
 
         self.character.s_race = char_subrace
         self.character.m_race = char_race
         self.character.background = char_background
         self.character.s_class = (char_subclass)
         self.character.m_class = (char_class)
+        self.character.skills = skill_list
 
         return self.character
 
 
 if __name__ == "__main__":
     #optimise, expansion, homebrew, usermade
-    creator = CharacterCreator(True, True, False, False)
+    creator = CharacterCreator(True, False, False, False)
     char = creator.char_generator()
     char.print_character()

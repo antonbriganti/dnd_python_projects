@@ -44,6 +44,11 @@
 		},
 		{
 			"class_name": "Blood Hunter",
+			"proficiencies":
+				{
+					"count": 2,
+					"skills": "Athletics, Acrobatics, Arcana, Inisght, Investigation, Survival"
+				},
 			"subclasses": [{
 					"name": "Order of the Mutant",
 					"build": "STR, WIS"

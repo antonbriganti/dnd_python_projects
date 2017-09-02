@@ -213,6 +213,11 @@
 	"classes": [
 		{
 			"class_name": "Barbarian",
+			"skill_proficiencies":
+				{
+					"count": 2,
+					"skills": "Animal Handling, Athletics, Intimidation, Nature, Perception, Survival"
+				},
 			"subclasses": [{
 					"name": "Berserker",
 					"build": "STR, CON"
@@ -233,6 +238,11 @@
 		},
 		{
 			"class_name": "Bard",
+			"skill_proficiencies":
+				{
+					"count": 3,
+					"skills": "Acrobatics, Animal Handling, Arcana, Athletics, Deception, History, Insight, Intimidation, Investigation, Medicine, Nature, Perception, Performance, Persuasion, Religion, Sleight of Hand, Stealth, Survival"
+				},
 			"subclasses": [{
 					"name": "College of Lore",
 					"build": "CHA, DEX"
@@ -245,6 +255,11 @@
 		},
 		{
 			"class_name": "Cleric",
+			"skill_proficiencies":
+				{
+					"count": 2,
+					"skills": "History, Insight, Medicine, Persuasion, Religion"
+				},
 			"subclasses": [{
 					"name": "Knowledge",
 					"build": "WIS, CON, STR"
@@ -277,6 +292,11 @@
 		},
 		{
 			"class_name": "Druid",
+			"skill_proficiencies":
+				{
+					"count": 2,
+					"skills": "Arcana, Animal Handling, Insight, Medicine, Nature, Perception, Religion, Survival"
+				},
 			"subclasses": [{
 					"name": "Circle of the Land",
 					"build": "WIS, CON"
@@ -289,6 +309,11 @@
 		},
 		{
 			"class_name": "Fighter",
+			"skill_proficiencies":
+				{
+					"count": 2,
+					"skills": "Acrobatics, Animal Handling, Athletics, History, Insight, Intimidation, Perception, Survival"
+				},
 			"subclasses": [{
 					"name": "Champion",
 					"build": "STR, CON, DEX"
@@ -305,6 +330,11 @@
 		},
 		{
 			"class_name": "Monk",
+			"skill_proficiencies":
+				{
+					"count": 2,
+					"skills": "Acrobatics, Athletics, History, Insight, Religion, Stealth"
+				},
 			"subclasses": [{
 					"name": "Way of the Open Hand",
 					"build": "DEX, WIS"
@@ -321,6 +351,11 @@
 		},
 		{
 			"class_name": "Paladin",
+			"skill_proficiencies":
+				{
+					"count": 2,
+					"skills": "Athletics, Insight, Intimidation, Medicine, Persuasion, Religion"
+				},
 			"subclasses": [{
 					"name": "Oath of Devotion",
 					"build": "STR, CHA"
@@ -337,6 +372,11 @@
 		},
 		{
 			"class_name": "Ranger",
+			"skill_proficiencies":
+				{
+					"count": 3,
+					"skills": "Athletics, Insight, Investigation, Nature, Perception, Stealth, Survival"
+				},
 			"subclasses": [{
 					"name": "Hunter",
 					"build": "DEX, WIS"
@@ -349,6 +389,11 @@
 		},
 		{
 			"class_name": "Rogue",
+			"skill_proficiencies":
+				{
+					"count": 4,
+					"skills": "Acrobatics, Athletics, Deception, Insight, Intimidation, Investigation, Perception, Performance, Persuasion, Sleight of Hand, Stealth"
+				},
 			"subclasses": [{
 					"name": "Thief",
 					"build": "DEX"
@@ -365,6 +410,11 @@
 		},
 		{
 			"class_name": "Sorcerer",
+			"skill_proficiencies":
+				{
+					"count": 2,
+					"skills": "Arcana, Deception, Insight, Intimidation, Persuasion, Religion"
+				},
 			"subclasses": [{
 					"name": "Draconic Bloodline",
 					"build": "CHA, CON"
@@ -377,6 +427,11 @@
 		},
 		{
 			"class_name": "Warlock",
+			"skill_proficiencies":
+				{
+					"count": 2,
+					"skills": "Arcana, History, Insight, Investigation, Medicine, Religion"
+				},
 			"subclasses": [{
 					"name": "Archfey",
 					"build": "CHA, CON"
@@ -393,6 +448,11 @@
 		},
 		{
 			"class_name": "Wizard",
+			"skill_proficiencies":
+				{
+					"count": 2,
+					"skills": "Arcana, Deception, History, Intimidation, Investigation, Nature, Religion"
+				},
 			"subclasses": [{
 					"name": "Abjuration",
 					"build": "INT, CON, DEX"
@@ -429,43 +489,56 @@
 		}
 	],
 	"backgrounds": [{
-			"name": "Acolyte"
+			"name": "Acolyte",
+			"skill_proficiencies": "Insight, Religion"
 		},
 		{
-			"name": "Charlatan"
+			"name": "Charlatan",
+			"skill_proficiencies": "Deception, Sleight of Hand"
 		},
 		{
-			"name": "Criminal"
+			"name": "Criminal",
+			"skill_proficiencies": "Deception, Stealth"
 		},
 		{
-			"name": "Entertainer"
+			"name": "Entertainer",
+			"skill_proficiencies": "Acrobatics, Performance"
 		},
 		{
-			"name": "Folk Hero"
+			"name": "Folk Hero",
+			"skill_proficiencies": "Animal Handling, Survival"
 		},
 		{
-			"name": "Guild Artisan"
+			"name": "Guild Artisan",
+			"skill_proficiencies": "Insight, Persuasion"
 		},
 		{
-			"name": "Hermit"
+			"name": "Hermit",
+			"skill_proficiencies": "Medicine, Religion"
 		},
 		{
-			"name": "Noble"
+			"name": "Noble",
+			"skill_proficiencies": "History, Persuasion"
 		},
 		{
-			"name": "Outlander"
+			"name": "Outlander",
+			"skill_proficiencies": "Athletics, Survival"
 		},
 		{
-			"name": "Sage"
+			"name": "Sage",
+			"skill_proficiencies": "Arcana, History"
 		},
 		{
-			"name": "Sailor"
+			"name": "Sailor",
+			"skill_proficiencies": "Athletics, Perception"
 		},
 		{
-			"name": "Soldier"
+			"name": "Soldier",
+			"skill_proficiencies": "Athletics, Intimidation"
 		},
 		{
-			"name": "Urchin"
+			"name": "Urchin",
+			"skill_proficiencies": "Sleight of Hand, Stealth"
 		}
 	]
 }
