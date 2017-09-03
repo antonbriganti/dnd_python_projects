@@ -44,7 +44,7 @@
 		},
 		{
 			"class_name": "Blood Hunter",
-			"proficiencies":
+			"skill_proficiencies":
 				{
 					"count": 2,
 					"skills": "Athletics, Acrobatics, Arcana, Inisght, Investigation, Survival"
