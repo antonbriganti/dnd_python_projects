@@ -115,8 +115,8 @@ class CharacterCreator:
 
         return ability_list
 
-    def set_random_class_skills(self, class_skill_data):
-        return(random.sample(set(class_skill_data["skills"]), class_skill_data["count"]))
+    def set_random_class_skills(self, class_skill_data, skill_list):
+        return(random.sample(set(class_skill_data["skills"]) - set(skill_list), class_skill_data["count"]))
 
     def char_generator(self):
         race_list = self.set_races()
@@ -177,7 +177,7 @@ class CharacterCreator:
 
         #set proficiencies
         skill_list = background_list[char_background]["skill_proficiencies"]
-        skill_list += self.set_random_class_skills(class_list[char_class]["skill_proficiencies"])
+        skill_list += self.set_random_class_skills(class_list[char_class]["skill_proficiencies"], skill_list)
 
         self.character.s_race = char_subrace
         self.character.m_race = char_race
@@ -191,6 +191,6 @@ class CharacterCreator:
 
 if __name__ == "__main__":
     #optimise, expansion, homebrew, usermade
-    creator = CharacterCreator(True, True, True, True)
+    creator = CharacterCreator(True, True, True, False)
     char = creator.char_generator()
     char.print_character()
