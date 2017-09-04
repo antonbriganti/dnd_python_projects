@@ -129,12 +129,13 @@ class CharacterCreator:
             char_race = sorted(list(race_list))[user_input]
             print()
 
-            if len(race_list[char_race]) == 1:
-                char_subrace, racial_bonus = race_list[char_race][0]
+            if len(race_list[char_race]["subraces"]) == 1:
+                char_subrace = ''
             else:
-                user_input = text_ui_helper.input_loop(race_list[char_race], 'Choose a subrace by index: ')
-                print(user_input, race_list[char_race][user_input])
-                char_subrace, racial_bonus = race_list[char_race][user_input]
+                user_input = text_ui_helper.input_loop(sorted(list(race_list[char_race]["subraces"])), 'Choose a subrace by index: ')
+                char_subrace = sorted(list(race_list[char_race]["subraces"]))[user_input]
+
+            racial_bonus = race_list[char_race]["subraces"][char_subrace]
             print()
 
             # select of class/subclass
@@ -142,12 +143,13 @@ class CharacterCreator:
             char_class = sorted(list(class_list))[user_input]
             print()
 
-            user_input = text_ui_helper.input_loop(class_list[char_class], 'Choose a subclass by index: ')
-            char_subclass, build = class_list[char_class][user_input]
-            print()
+            user_input = text_ui_helper.input_loop(sorted(list(class_list[char_class]["subclasses"])), 'Choose a subclass by index: ')
+            char_subclass = sorted(list(class_list[char_class]["subclasses"]))[user_input]
+            build = class_list[char_class]["subclasses"][char_subclass]
 
-            user_input = text_ui_helper.input_loop(background_list, 'Choose a background by index: ')
-            char_background = background_list[user_input]
+
+            user_input = text_ui_helper.input_loop(sorted(list(background_list)), 'Choose a background by index: ')
+            char_background = sorted(list(background_list))[user_input]
 
         else:
             # random select of race/subrace
@@ -189,6 +191,6 @@ class CharacterCreator:
 
 if __name__ == "__main__":
     #optimise, expansion, homebrew, usermade
-    creator = CharacterCreator(True, True, True, False)
+    creator = CharacterCreator(True, True, True, True)
     char = creator.char_generator()
     char.print_character()
