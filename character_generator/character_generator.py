@@ -69,33 +69,33 @@ class CharacterCreator:
         return current_dict
 
     def set_races(self):
-        race_list = json_reader.get_races('srd_data/phb_data.json')
+        selectable_races = json_reader.get_races('srd_data/phb_data.json')
         if self.runtime_flags['expansion']:
             expansion_races = json_reader.get_races("srd_data/expansion_data.json") # expansion data
-            race_list = self.expand_dict(race_list, expansion_races)
+            selectable_races = self.expand_dict(selectable_races, expansion_races)
 
-        return race_list
+        return selectable_races
 
     def set_classes(self):
-        class_list = json_reader.get_classes('srd_data/phb_data.json')
+        selectable_classes = json_reader.get_classes('srd_data/phb_data.json')
         if self.runtime_flags['expansion']:
             expansion_classes = json_reader.get_classes("srd_data/expansion_data.json")
-            class_list = self.expand_dict(class_list, expansion_classes)
+            selectable_classes = self.expand_dict(selectable_classes, expansion_classes)
 
         if self.runtime_flags['homebrew']:
             # homebrew data
             homebrew_classes = json_reader.get_classes("srd_data/homebrew_data.json")
-            class_list = self.expand_dict(class_list, homebrew_classes)
+            selectable_classes = self.expand_dict(selectable_classes, homebrew_classes)
 
-        return class_list
+        return selectable_classes
 
     def set_backgrounds(self):
-        background_list = json_reader.get_backgrounds('srd_data/phb_data.json')
+        selectable_backgrounds = json_reader.get_backgrounds('srd_data/phb_data.json')
         if self.runtime_flags['expansion']:
             expansion_backgrounds = json_reader.get_backgrounds("srd_data/expansion_data.json")
-            background_list = self.expand_dict(background_list, expansion_backgrounds)
+            selectable_backgrounds = self.expand_dict(selectable_backgrounds, expansion_backgrounds)
 
-        return background_list
+        return selectable_backgrounds
 
     def set_optimised_stats(self, build):
         ability_list = {'STR' : 0, 'DEX' : 0, 'CON' : 0, 'INT' : 0, 'WIS' : 0, 'CHA' : 0}
@@ -113,51 +113,51 @@ class CharacterCreator:
 
         return ability_list
 
-    def set_random_class_skills(self, class_skill_data, skill_list):
-        return(random.sample(set(class_skill_data["skills"]) - set(skill_list), class_skill_data["count"]))
+    def set_random_class_skills(self, class_skill_data):
+        return(random.sample(set(class_skill_data["skills"]) - set(self.character.skills), class_skill_data["count"]))
 
     def char_generator(self):
-        race_list = self.set_races()
-        class_list = self.set_classes()
-        background_list = self.set_backgrounds()
+        selectable_races = self.set_races()
+        selectable_classes = self.set_classes()
+        selectable_backgrounds = self.set_backgrounds()
 
         if self.runtime_flags['usermade']:
             # select of race/subrace
-            user_input = text_ui_helper.input_loop(sorted(list(race_list)), 'Choose a race by index: ')
-            char_race = sorted(list(race_list))[user_input]
+            user_input = text_ui_helper.input_loop(sorted(list(selectable_races)), 'Choose a race by index: ')
+            self.character.m_race = sorted(list(selectable_races))[user_input]
             print()
 
-            if len(race_list[char_race]["subraces"]) == 1:
-                char_subrace = ''
+            if len(selectable_races[self.character.m_race]["subraces"]) == 1:
+                self.character.s_race = ''
             else:
-                user_input = text_ui_helper.input_loop(sorted(list(race_list[char_race]["subraces"])), 'Choose a subrace by index: ')
-                char_subrace = sorted(list(race_list[char_race]["subraces"]))[user_input]
+                user_input = text_ui_helper.input_loop(sorted(list(selectable_races[self.character.m_race]["subraces"])), 'Choose a subrace by index: ')
+                self.character.s_race = sorted(list(selectable_races[self.character.m_race]["subraces"]))[user_input]
 
-            racial_bonus = race_list[char_race]["subraces"][char_subrace]
+            racial_bonus = selectable_races[self.character.m_race]["subraces"][self.character.s_race]
             print()
 
             # select of class/subclass
-            user_input = text_ui_helper.input_loop(sorted(list(class_list)), 'Choose a class by index: ')
-            char_class = sorted(list(class_list))[user_input]
+            user_input = text_ui_helper.input_loop(sorted(list(selectable_classes)), 'Choose a class by index: ')
+            self.character.m_class = sorted(list(selectable_classes))[user_input]
             print()
 
-            user_input = text_ui_helper.input_loop(sorted(list(class_list[char_class]["subclasses"])), 'Choose a subclass by index: ')
-            char_subclass = sorted(list(class_list[char_class]["subclasses"]))[user_input]
-            build = class_list[char_class]["subclasses"][char_subclass]
+            user_input = text_ui_helper.input_loop(sorted(list(selectable_classes[self.character.m_class]["subclasses"])), 'Choose a subclass by index: ')
+            self.character.s_class = sorted(list(selectable_classes[self.character.m_class]["subclasses"]))[user_input]
+            build = selectable_classes[self.character.m_class]["subclasses"][self.character.s_class]
 
 
-            user_input = text_ui_helper.input_loop(sorted(list(background_list)), 'Choose a background by index: ')
-            char_background = sorted(list(background_list))[user_input]
+            user_input = text_ui_helper.input_loop(sorted(list(selectable_backgrounds)), 'Choose a background by index: ')
+            self.character.background = sorted(list(selectable_backgrounds))[user_input]
 
         else:
             # random select of race/subrace
-            char_race = random.choice(list(race_list.keys())) # randomly choose from dictionary keys as race
-            char_subrace, racial_bonus = random.choice(list(race_list[char_race]["subraces"].items())) # randomly choose subrace and build
+            self.character.m_race = random.choice(list(selectable_races.keys())) # randomly choose from dictionary keys as race
+            self.character.s_race, racial_bonus = random.choice(list(selectable_races[self.character.m_race]["subraces"].items())) # randomly choose subrace and build
 
-            char_class = random.choice(list(class_list.keys()))
-            char_subclass, build = random.choice(list(class_list[char_class]["subclasses"].items()))
+            self.character.m_class = random.choice(list(selectable_classes.keys()))
+            self.character.s_class, build = random.choice(list(selectable_classes[self.character.m_class]["subclasses"].items()))
 
-            char_background = random.choice(list(background_list.keys()))
+            self.character.background = random.choice(list(selectable_backgrounds.keys()))
 
         #set stats
         if self.runtime_flags['optimise']:
@@ -167,22 +167,17 @@ class CharacterCreator:
             for ability in self.character.ability_list.keys(): self.character.ability_list[ability] += roll.pop()
 
         # racial bonus
-        if char_race == "Half Elf":
+        if self.character.m_race == "Half Elf":
             for _ in range(2):
                 racial_bonus.append(self.set_extra_racial(racial_bonus)) # set random extra ability
+                
         for bonus in racial_bonus:
             self.character.ability_list[bonus[0]] += bonus[1]
 
         #set proficiencies
-        skill_list = background_list[char_background]["skill_proficiencies"]
-        skill_list += self.set_random_class_skills(class_list[char_class]["skill_proficiencies"], skill_list)
+        self.character.skills = selectable_backgrounds[self.character.background]["skill_proficiencies"]
+        self.character.skills += self.set_random_class_skills(selectable_classes[self.character.m_class]["skill_proficiencies"])
 
-        self.character.s_race = char_subrace
-        self.character.m_race = char_race
-        self.character.background = char_background
-        self.character.s_class = (char_subclass)
-        self.character.m_class = (char_class)
-        self.character.skills = skill_list
 
         return self.character
 
