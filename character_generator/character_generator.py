@@ -57,8 +57,7 @@ class CharacterCreator:
 
     def set_extra_racial(self, subrace_bonus):
         stat = random.choice(list(set(self.character.ability_list.keys()) - set(subrace_bonus)))
-        subrace_bonus.append((stat, 1))
-        return subrace_bonus
+        return (stat, 1)
 
     def expand_dict(self, current_dict, new_dict):
         for item in new_dict:
@@ -66,8 +65,7 @@ class CharacterCreator:
                 current_dict[item] = new_dict[item]
             else:
                 for key, content in new_dict[item].items():
-                    # merges conflicting items into one entry
-                    current_dict[item][key] = {**current_dict[item][key], **content}
+                    current_dict[item][key].update(content) # merges conflicting items into one entry
         return current_dict
 
     def set_races(self):
@@ -171,7 +169,7 @@ class CharacterCreator:
         # racial bonus
         if char_race == "Half Elf":
             for _ in range(2):
-                racial_bonus = self.set_extra_racial(racial_bonus) # set random extra ability
+                racial_bonus.append(self.set_extra_racial(racial_bonus)) # set random extra ability
         for bonus in racial_bonus:
             self.character.ability_list[bonus[0]] += bonus[1]
 
@@ -191,6 +189,6 @@ class CharacterCreator:
 
 if __name__ == "__main__":
     #optimise, expansion, homebrew, usermade
-    creator = CharacterCreator(True, True, True, False)
+    creator = CharacterCreator(True, True, True, True)
     char = creator.char_generator()
     char.print_character()
