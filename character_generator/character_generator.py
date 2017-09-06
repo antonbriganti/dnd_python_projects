@@ -43,11 +43,11 @@ class Character:
             #input('Press Enter to continue. ')
             print()
 
-    def generate_json(self):
-        return json.dumps(self.__dict__)
-
     def generate_dict(self):
         return self.__dict__
+
+    def generate_json_string(self):
+        return json.dumps(self.generate_dict())
 
 class CharacterCreator:
     def __init__(self, optimise, expansion, homebrew, usermade):
@@ -189,6 +189,6 @@ class CharacterCreator:
 
 if __name__ == "__main__":
     #optimise, expansion, homebrew, usermade
-    creator = CharacterCreator(True, True, True, True)
+    creator = CharacterCreator(True, True, True, False)
     char = creator.char_generator()
-    char.print_character()
+    print(char.generate_json_string())

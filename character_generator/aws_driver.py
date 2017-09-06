@@ -5,4 +5,10 @@ import pprint, json
 def lambda_handler(json_input, context):
     creator = CharacterCreator(True, True, True, False)
     char = creator.char_generator()
-    return(char.generate_dict())
+    response = {'statusCode': 200,
+                'headers': {
+                            'Content-Type': 'application/json',
+                            'Access-Control-Allow-Origin': '*'},
+                'body': char.generate_json_string()
+                }
+    return response
