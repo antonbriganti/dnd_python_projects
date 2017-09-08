@@ -189,6 +189,6 @@ class CharacterCreator:
 
 if __name__ == "__main__":
     #optimise, expansion, homebrew, usermade
-    creator = CharacterCreator(True, True, True, False)
+    creator = CharacterCreator(True, True, True, True)
     char = creator.char_generator()
     print(char.generate_json_string())
