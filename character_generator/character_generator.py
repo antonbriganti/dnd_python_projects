@@ -50,10 +50,11 @@ class Character:
         return json.dumps(self.generate_dict())
 
 class CharacterCreator:
-    def __init__(self, optimise, expansion, homebrew, usermade):
+    def __init__(self, optimise, expansion, homebrew, user_choice = {}):
         self.character = Character()
         self.runtime_flags = {'optimise': optimise, 'expansion': expansion,
-                            'homebrew': homebrew, 'usermade': usermade}
+                            'homebrew': homebrew}
+        self.user_choice = user_choice
 
     def set_extra_racial(self, subrace_bonus):
         stat = random.choice(list(set(self.character.ability_list.keys()) - set(subrace_bonus)))
@@ -116,48 +117,26 @@ class CharacterCreator:
     def set_random_class_skills(self, class_skill_data, skill_list):
         return(random.sample(set(class_skill_data["skills"]) - set(skill_list), class_skill_data["count"]))
 
+    def get_user_or_random_choice(self, key, dictionary):
+        if key in self.user_choice and self.user_choice[key] in dictionary.keys():
+            return self.user_choice[key]
+        else: return random.choice(list(dictionary.keys()))
+
     def char_generator(self):
         race_list = self.set_races()
         class_list = self.set_classes()
         background_list = self.set_backgrounds()
 
-        if self.runtime_flags['usermade']:
-            # select of race/subrace
-            user_input = text_ui_helper.input_loop(sorted(list(race_list)), 'Choose a race by index: ')
-            char_race = sorted(list(race_list))[user_input]
-            print()
+        # random select of race/subrace
+        char_race = self.get_user_or_random_choice("m_race", race_list)
+        char_subrace = self.get_user_or_random_choice("s_race", race_list[char_race]["subraces"])
+        racial_bonus = race_list[char_race]["subraces"][char_subrace]
 
-            if len(race_list[char_race]["subraces"]) == 1:
-                char_subrace = ''
-            else:
-                user_input = text_ui_helper.input_loop(sorted(list(race_list[char_race]["subraces"])), 'Choose a subrace by index: ')
-                char_subrace = sorted(list(race_list[char_race]["subraces"]))[user_input]
+        char_class = self.get_user_or_random_choice("m_class", class_list)
+        char_subclass = self.get_user_or_random_choice("s_class", class_list[char_class]["subclasses"])
+        build = class_list[char_class]["subclasses"][char_subclass]
 
-            racial_bonus = race_list[char_race]["subraces"][char_subrace]
-            print()
-
-            # select of class/subclass
-            user_input = text_ui_helper.input_loop(sorted(list(class_list)), 'Choose a class by index: ')
-            char_class = sorted(list(class_list))[user_input]
-            print()
-
-            user_input = text_ui_helper.input_loop(sorted(list(class_list[char_class]["subclasses"])), 'Choose a subclass by index: ')
-            char_subclass = sorted(list(class_list[char_class]["subclasses"]))[user_input]
-            build = class_list[char_class]["subclasses"][char_subclass]
-
-
-            user_input = text_ui_helper.input_loop(sorted(list(background_list)), 'Choose a background by index: ')
-            char_background = sorted(list(background_list))[user_input]
-
-        else:
-            # random select of race/subrace
-            char_race = random.choice(list(race_list.keys())) # randomly choose from dictionary keys as race
-            char_subrace, racial_bonus = random.choice(list(race_list[char_race]["subraces"].items())) # randomly choose subrace and build
-
-            char_class = random.choice(list(class_list.keys()))
-            char_subclass, build = random.choice(list(class_list[char_class]["subclasses"].items()))
-
-            char_background = random.choice(list(background_list.keys()))
+        char_background = self.get_user_or_random_choice("background", background_list)
 
         #set stats
         if self.runtime_flags['optimise']:
@@ -180,15 +159,15 @@ class CharacterCreator:
         self.character.s_race = char_subrace
         self.character.m_race = char_race
         self.character.background = char_background
-        self.character.s_class = (char_subclass)
-        self.character.m_class = (char_class)
+        self.character.s_class = char_subclass
+        self.character.m_class = char_class
         self.character.skills = skill_list
 
         return self.character
 
 
 if __name__ == "__main__":
-    #optimise, expansion, homebrew, usermade
-    creator = CharacterCreator(True, True, True, False)
+    #user_input = {"m_race":"Dragonborn", "s_race":"asd", "m_class":"Monk", "s_class":"Way of the Long Death"}
+    creator = CharacterCreator(True, True, True)
     char = creator.char_generator()
     print(char.generate_json_string())

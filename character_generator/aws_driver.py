@@ -3,7 +3,7 @@ from character_generator import Character, CharacterCreator
 import pprint, json
 
 def lambda_handler(json_input, context):
-    creator = CharacterCreator(True, True, True, False)
+    creator = CharacterCreator(True, True, True)
     char = creator.char_generator()
     response = {'statusCode': 200,
                 'headers': {
