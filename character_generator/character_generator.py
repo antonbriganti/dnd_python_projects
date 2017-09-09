@@ -51,13 +51,12 @@ class Character:
 
 class CharacterCreator:
     def __init__(self, optimise, expansion, homebrew, user_choice = {}):
-        self.character = Character()
         self.runtime_flags = {'optimise': optimise, 'expansion': expansion,
                             'homebrew': homebrew}
         self.user_choice = user_choice
 
-    def set_extra_racial(self, subrace_bonus):
-        stat = random.choice(list(set(self.character.ability_list.keys()) - set(subrace_bonus)))
+    def set_extra_racial(self, current_abilities, subrace_bonus):
+        stat = random.choice(list(set(current_abilities.keys()) - set(subrace_bonus)))
         return (stat, 1)
 
     def expand_dict(self, current_dict, new_dict):
@@ -123,6 +122,8 @@ class CharacterCreator:
         else: return random.choice(list(dictionary.keys()))
 
     def char_generator(self):
+        character = Character()
+
         race_list = self.set_races()
         class_list = self.set_classes()
         background_list = self.set_backgrounds()
@@ -140,30 +141,32 @@ class CharacterCreator:
 
         #set stats
         if self.runtime_flags['optimise']:
-            self.character.ability_list = self.set_optimised_stats(build)
+            character.ability_list = self.set_optimised_stats(build)
         else:
             roll = stat_roller.sorted_rolls()
-            for ability in self.character.ability_list.keys(): self.character.ability_list[ability] += roll.pop()
+            for ability in character.ability_list.keys(): character.ability_list[ability] += roll.pop()
 
         # racial bonus
         if char_race == "Half Elf":
             for _ in range(2):
-                racial_bonus.append(self.set_extra_racial(racial_bonus)) # set random extra ability
+                racial_bonus.append(self.set_extra_racial(character.ability_list, racial_bonus)) # set random extra ability
         for bonus in racial_bonus:
-            self.character.ability_list[bonus[0]] += bonus[1]
+            character.ability_list[bonus[0]] += bonus[1]
 
         #set proficiencies
         skill_list = background_list[char_background]["skill_proficiencies"]
         skill_list += self.set_random_class_skills(class_list[char_class]["skill_proficiencies"], skill_list)
 
-        self.character.s_race = char_subrace
-        self.character.m_race = char_race
-        self.character.background = char_background
-        self.character.s_class = char_subclass
-        self.character.m_class = char_class
-        self.character.skills = skill_list
+        if "name" in self.user_choice:
+            character.name = self.user_choice["name"]
+        character.s_race = char_subrace
+        character.m_race = char_race
+        character.s_class = char_subclass
+        character.m_class = char_class
+        character.background = char_background
+        character.skills = skill_list
 
-        return self.character
+        return character
 
 
 if __name__ == "__main__":
