@@ -1,0 +1,141 @@
+[{
+	"damage_dice": "1d4",
+	"properties": "Light",
+	"weapon_name": "Club",
+	"damage_type": "Bludgeoning"
+}, {
+	"damage_dice": "1d4",
+	"properties": "Finesse, light, thrown (range 20/60)",
+	"weapon_name": "Dagger",
+	"damage_type": "Piercing"
+}, {
+	"damage_dice": "1d8",
+	"properties": "Two-handed",
+	"weapon_name": "Greatclub",
+	"damage_type": "Bludgeoning"
+}, {
+	"damage_dice": "1d6",
+	"properties": "Light, thrown (range 20/60)",
+	"weapon_name": "Handaxe",
+	"damage_type": "Slashing"
+}, {
+	"damage_dice": "1d6",
+	"properties": "Thrown (range 30/120)",
+	"weapon_name": "Javelin",
+	"damage_type": "Piercing"
+}, {
+	"damage_dice": "1d4",
+	"properties": "Light, thrown (range 20/60)",
+	"weapon_name": "Light Hammer",
+	"damage_type": "Bludgeoning"
+}, {
+	"damage_dice": "1d6",
+	"properties": "Versatile (1d8)",
+	"weapon_name": "Mace",
+	"damage_type": "Bludgeoning"
+}, {
+	"damage_dice": "1d6",
+	"properties": "Light",
+	"weapon_name": "Quarterstaff",
+	"damage_type": "Bludgeoning"
+}, {
+	"damage_dice": "1d6",
+	"properties": "Light",
+	"weapon_name": "Sickle",
+	"damage_type": "Bludgeoning"
+}, {
+	"damage_dice": "1d6",
+	"properties": "Thrown (range 20/60), versatile (1d8)",
+	"weapon_name": "Spear",
+	"damage_type": "Piercing"
+}, {
+	"damage_dice": "1d8",
+	"properties": "Versatile (1d10)",
+	"weapon_name": "Battleaxe",
+	"damage_type": "Slashing"
+}, {
+	"damage_dice": "1d8",
+	"properties": "",
+	"weapon_name": "Flail",
+	"damage_type": "Bludgeoning"
+}, {
+	"damage_dice": "1d10",
+	"properties": "Heavy, reach, two-handed",
+	"weapon_name": "Glaive",
+	"damage_type": "Slashing"
+}, {
+	"damage_dice": "1d12",
+	"properties": "Heavy, two-handed",
+	"weapon_name": "Greataxe",
+	"damage_type": "Slashing"
+}, {
+	"damage_dice": "2d6",
+	"properties": "Heavy, two-handed",
+	"weapon_name": "Greatsword",
+	"damage_type": "Slashing"
+}, {
+	"damage_dice": "1d10",
+	"properties": "Heavy, reach, two-handed",
+	"weapon_name": "Halberd",
+	"damage_type": "Slashing"
+}, {
+	"damage_dice": "1d12",
+	"properties": "Reach, special",
+	"weapon_name": "Lance",
+	"damage_type": "Piercing"
+}, {
+	"damage_dice": "1d8",
+	"properties": "Versatile (1d10)",
+	"weapon_name": "Longsword",
+	"damage_type": "Slashing"
+}, {
+	"damage_dice": "2d6",
+	"properties": "Heavy, two-handed",
+	"weapon_name": "Maul",
+	"damage_type": "Bludgeoning"
+}, {
+	"damage_dice": "1d8",
+	"properties": "",
+	"weapon_name": "Morningstar",
+	"damage_type": "Piercing"
+}, {
+	"damage_dice": "1d10",
+	"properties": "Heavy, reach, two-handed",
+	"weapon_name": "Pike",
+	"damage_type": "Piercing"
+}, {
+	"damage_dice": "1d8",
+	"properties": "Finesse",
+	"weapon_name": "Rapier",
+	"damage_type": "Piercing"
+}, {
+	"damage_dice": "1d6",
+	"properties": "Finesse, light",
+	"weapon_name": "Scimitar",
+	"damage_type": "Slashing"
+}, {
+	"damage_dice": "1d6",
+	"properties": "Finesse, light",
+	"weapon_name": "Shortword",
+	"damage_type": "Piercing"
+}, {
+	"damage_dice": "1d6",
+	"properties": "Thrown (range 20/60), versatile (1d8)",
+	"weapon_name": "Trident",
+	"damage_type": "Piercing"
+}, {
+	"damage_dice": "1d8",
+	"properties": "",
+	"weapon_name": "War pick",
+	"damage_type": "Piercing"
+}, {
+	"damage_dice": "1d8",
+	"properties": "Versatile (1d10",
+	"weapon_name": "Warhammer",
+	"damage_type": "Bludgeoning"
+}, {
+	"damage_dice": "1d4",
+	"properties": "Finesse, reach",
+	"weapon_name": "Whip",
+	"damage_type": "Slashing"
+}]

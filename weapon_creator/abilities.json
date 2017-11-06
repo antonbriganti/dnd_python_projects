@@ -1,0 +1,321 @@
+[{
+		"prefix": "Ancient",
+		"suffix": "of Old",
+		"description": "This worn weapon inscribed with ancient runes can be used as a Spellcasting Focus"
+	}, {
+		"prefix": "Arcane",
+		"suffix": "of Arcana",
+		"description": "This weapon can project a spectral tome suspended in mid-air that the bearer can interact with like a physical book.  This tome can be used as a spellbook and may contain some spells from its previous bearer."
+	}, {
+		"prefix": "Artist's",
+		"suffix": "of the Artist",
+		"description": "The bearer may use this weapon to make colored marks on any surface. The marks will fade away in 24 hours."
+	}, {
+		"prefix": "Assassin's",
+		"suffix": "of the Assassin",
+		"description": "The bearer may add 1d6 poison damage to all attacks made while hidden from the enemy, or during surprise rounds."
+	}, {
+		"prefix": "Autumn",
+		"suffix": "of Falling Leaves",
+		"description": "The weapon contains a reservoir of natural magic that can a create a cascade of falling leaves for up to 30 seconds.  The bearer may use a bonus action to strike the ground and call forth the magical leaves. While active, creatures within 10 feet of where the weapon was struck have half cover.  A long rest restores 1d4 seconds of energy to the weapon's reservoir."
+	}, {
+		"prefix": "Barbed",
+		"suffix": "of Barbs",
+		"description": "After an attack roll, the bearer may use their reaction to add 1d4 to the damage roll, but they must also take the additional damage."
+	}, {
+		"prefix": "Binding",
+		"suffix": "of Binding",
+		"description": "Once per short rest, you hit a creature with this weapon, the ground beneath binds to its feet, slowing its speed by 5 feet until the end of its next turn. This has no effect on creatures that are flying or swimming."
+	}, {
+		"prefix": "Blind",
+		"suffix": "of Eyes",
+		"description": "Garrish eyes are painted on this weapon.  The bearer can use an action to see/unsee through the eyes, even if their own senses are compromised."
+	}, {
+		"prefix": "Bonded",
+		"suffix": "of Twins",
+		"description": "This item is part of a pair of identical items. The bearer of the weapon can spend 1 hour meditating to discern the location of the other, as long as they are on the same plane. Furthermore, you are able to sense the object’s general location if you are within 1000 feet of it, as long as it not obscured by any thickness of lead."
+	}, {
+		"prefix": "Booming",
+		"suffix": "of Thunder",
+		"description": "The bearer can add 1d6 Thunder damage to an attack made with this weapon."
+	}, {
+		"prefix": "Cardinal",
+		"suffix": "of the Lodestone",
+		"description": "The bearer always knows which way is north and has advantage on Survival (Wisdom) checks for land navigation."
+	}, {
+		"prefix": "Caustic",
+		"suffix": "of Corrosion",
+		"description": "The bearer may choose to deal Acid damage with this weapon and gain a +1 bonus to damage."
+	}, {
+		"prefix": "Chained",
+		"suffix": "of Chains",
+		"description": "The bearer can spend an action to mystically bind or unbind themselves to this weapon. While bound, the bearer can no longer be disarmed but cannot switch out or throw this weapon."
+	}, {
+		"prefix": "Captivating",
+		"suffix": "of Saving Graces",
+		"description": "While the bearer is at 0 hp, they begin to hear the most beautiful music they have ever heard.  The bearer has advantage on death saving throws and cannot recall details about the music if they wake."
+	}, {
+		"prefix": "Charged",
+		"suffix": "of Lightning",
+		"description": "The bearer can add 1d6 Lightning damage to an attack made with this weapon."
+	}, {
+		"prefix": "Compassionate",
+		"suffix": "of Compassion",
+		"description": "Wounds inflicted with this weapon cause no damage."
+	}, {
+		"prefix": "Consecrated",
+		"suffix": "of Consecration",
+		"description": "This weapon deals an additional 1d6 radiant damage when attacking Undead. Any creature slain with this weapon cannot be raised as undead."
+	}, {
+		"prefix": "Corrosive",
+		"suffix": "of Dissolving",
+		"description": "When the bearer hits a creature with this weapon, they may deal their proficiency bonus in acid damage to a different creature within 5 feet of the target."
+	}, {
+		"prefix": "Crashing",
+		"suffix": "of the Crashing Waves",
+		"description": "Whenever the bearer deals damage to a hostile creature, this weapon gains a charge. The weapon can hold up to 5 charges at one time. When the user declares an attack, they can expend any of the stored charges to deal additional lighting damage with their attack. The extra damage dealt is determined by the number of charges expended (1=d4, 2=d6, 3=d8, 4=d10, 5=d12). If a round passes and the weapon has not struck a foe, it loses all charges unless the wielder spends a bonus action to maintain them."
+	}, {
+		"prefix": "Cruel",
+		"suffix": "of Cruelty",
+		"description": "The bearer may re-roll damage from critical hits scored with this weapon and take the second result."
+	}, {
+		"prefix": "Dark",
+		"suffix": "of Darkness",
+		"description": "The bearer can add 1d6 Necrotic damage to an attack made with this weapon."
+	}, {
+		"prefix": "Deceptive",
+		"suffix": "of Deception",
+		"description": "When the bearer attunes this item, choose a harmless object within sight such as a tea cup, a ball of yarn, or a hairpin.  If the bearer is touching the item, they may use a bonus action to transform the weapon in or out of this form."
+	}, {
+		"prefix": "Defensive",
+		"suffix": "of Defence",
+		"description": "Whenever the bearer takes a dodge or disengage action, they may move an additional 5 feet that round."
+	}, {
+		"prefix": "Delver's",
+		"suffix": "of the Delver",
+		"description": "While underground, the bearer of this item always knows the item's depth below the surface and the direction to the nearest path leading upward."
+	}, {
+		"prefix": "Dreamscribe's",
+		"suffix": "of the Dreamscribe",
+		"description": "The bearer can read books they are touching while sleeping."
+	},
+	{
+		"prefix": "Drunkard's",
+		"suffix": "of Taverns",
+		"description": "The bearer always knows the direction to the nearest tavern in a 60 mile radius."
+	}, {
+		"prefix": "Effulgent",
+		"suffix": "of Light",
+		"description": "The bearer can use this item to cast the Light cantrip on itself at will. While lit, it deals radiant damage instead of its usual damage type."
+	}, {
+		"prefix": "Fatespun",
+		"suffix": "of Intertwined Fates",
+		"description": "Once per short rest, when the bearer crits with this weapon, they gain inspiration."
+	}, {
+		"prefix": "Frozen",
+		"suffix": "of Ice",
+		"description": "The bearer can add 1d6 cold damage to an attack made with this weapon."
+	}, {
+		"prefix": "Furious",
+		"suffix": "of Fury",
+		"description": "Treat as a +1 magic weapon when the bearer is raging."
+	}, {
+		"prefix": "Ghost-Touched",
+		"suffix": "of Remembered Glory",
+		"description": "This weapon can be wielded by a missing limb.  If so, it becomes a +1 weapon."
+	}, {
+		"prefix": "Glorious",
+		"suffix": "of Glory",
+		"description": "The bearer can add 1d6 Radiant damage to an attack made with this weapon."
+	}, {
+		"prefix": "Goading",
+		"suffix": "of Duels",
+		"description": "Once per short rest, when the bearer crits with this weapon it casts Compelled Duel on the creature it hit with a DC15 saving throw."
+	}, {
+		"prefix": "Harkening",
+		"suffix": "of Eavesdropping",
+		"description": "As long as it is on the same plane of existence, the bearer can hear through this weapon as if they were present."
+	}, {
+		"prefix": "Haunted",
+		"suffix": "of Vengeful Spirits",
+		"description": "Smoke rises from this weapon revealing the apparitions that haunt it. They lash out at every living creature in a 5 foot radius, including the bearer, when a hit is landed, doing 1d12 necrotic damage."
+	}, {
+		"prefix": "Healing",
+		"suffix": "of Healing",
+		"description": "This item contains a bead of healing. Once per long rest, the bearer can use the bead and an action to heal 1d8 hit points at touch range."
+	}, {
+		"prefix": "Heroic",
+		"suffix": "of Heroes",
+		"description": "Ancient heroes have wielded this weapon throughout the ages, and their courage still lingers.  The bearer has advantage on saving throws vs. fear effects."
+	}, {
+		"prefix": "Iconic",
+		"suffix": "of Symbols",
+		"description": "The weapon is inscribed with holy symbols of the God of the DM's choice.A cleric or paladin that serves that god may use this weapon as a divine focus."
+	}, {
+		"prefix": "Impact",
+		"suffix": "of Impact",
+		"description": "Once per long rest, the bearer may spend an action to activate an ancient mechanism within the weapon.Gears turn and parts shift as the weapon reconfigures itself into a more menacing version of the original.For a minute, attacks made with this weapon ignore resistances(but not immunities)."
+	}, {
+		"prefix": "Indifferent",
+		"suffix": "of Indifference",
+		"description": "The bearer no longer feels emotions.They have immunity to fear effects but disadvantage on Insight and Performance checks, and cannot Rage."
+	},
+	{
+		"prefix": "Jagged",
+		"suffix": "of Teeth",
+		"description": "Once hit by this weapon, the victim cannot regain hit points until the beginning of their next turn."
+	},
+	{
+		"prefix": "Jester's",
+		"suffix": "of Madness",
+		"description": "Once per short rest, when the bearer crits with this weapon it casts Crown of Madness on the creature it hit, DC15"
+	}, {
+		"prefix": "Leaping",
+		"suffix": "of Leaping",
+		"description": "Contains 1d6 non-rechargable uses of the Jump spell."
+	},
+	{
+		"prefix": "Liar's",
+		"suffix": "of Lies",
+		"description": "Contains 1d6 non-rechargable uses of the Silent Image spell."
+	}, {
+		"prefix": "Malediction",
+		"suffix": "of Malediction",
+		"description": "Contains 1d6 non-rechargable uses of the Bane spell."
+	}, {
+		"prefix": "Maligning",
+		"suffix": "of Maligning",
+		"description": "This weapon does an additional 1d6 damage on attacks of opportunity."
+	}, {
+		"prefix": "Marquis",
+		"suffix": "of the Marquis",
+		"description": "Once per short rest, when the bearer crit with this weapon it casts Command on its target with the word 'grovel', DC15"
+	}, {
+		"prefix": "Masked",
+		"suffix": "of Still Winds",
+		"description": "The bearer and all of their posessions are completely odorless."
+	},
+	{
+		"prefix": "Master's",
+		"suffix": "of Servants",
+		"description": "Contains 1d6 non-rechargable uses charges of the Unseen Servant spell."
+	}, {
+		"prefix": "Mimicking",
+		"suffix": "of Mimicry",
+		"description": "Once per long rest, when the bearer places this weapon beside another melee weapon for 10 minutes, this weapon changes weapon type, size, and physical qualities to become an exact replica of the other weapon.  It does not gain any of the other weapon's magical properties, and resets to its original form after combat."
+	}, {
+		"prefix": "Mindscour",
+		"suffix": "of Countermeasures",
+		"description": "This weapon disrupts all telepathic communication within 15 feet.Psychic attacks are not affected."
+	}, {
+		"prefix": "Mind's Eye",
+		"suffix": "of the Mind's Eye",
+		"description": "The bearer can add 1 d6 Psychic damage to an attack made with this weapon."
+	}, {
+		"prefix": "Mortuary",
+		"suffix": "of the Mortal Coil",
+		"description": "The bearer's vital signs, such as a pulse and breathing, are masked by this weapon while it is drawn, and they are undetectable by non-magical inspection."
+	}, {
+		"prefix": "Mourner's",
+		"suffix": "of Last Words",
+		"description": "Contains one charge of the Speak With Dead spell.It regains the charge when the bearer dies."
+	}, {
+		"prefix": "Parrying",
+		"suffix": "of Parrying",
+		"description": "Once per long rest, the bearer may use their reaction to gain a + 2 AC bonus until the end of the turn."
+	},
+	{
+		"prefix": "Pernicious",
+		"suffix": "of the Snake",
+		"description": "The bearer can add 1 d6 Poison damage to an attack made with this weapon."
+	}, {
+		"prefix": "Phantom",
+		"suffix": "of the Phantasm",
+		"description": "Damage inflicted with this weapon leaves no physical sign of injury, such as cuts and bruises, and draws no blood."
+	}, {
+		"prefix": "Force",
+		"suffix": "of Force",
+		"description": "The bearer can add 1 d6 Force damage to an attack made with this weapon."
+	}, {
+		"prefix": "Quantum",
+		"suffix": "of Uncertainty",
+		"description": "Every time the bearer takes a long rest, there is a random chance that this weapon changes in appearance and function.It retains this property but any other properties are lost.However, it gains a new random descriptionfrom this chart."
+	}, {
+		"prefix": "Rainbow",
+		"suffix": "of Rainbows",
+		"description": "The bearer may change the damage type of a spell they cast once per long rest."
+	}, {
+		"prefix": "Refined",
+		"suffix": "of Quality",
+		"description": "This weapon is so finely constructed it never needs maintenance,cannot rust or tarnish, and gains a + 1 to damage rolls."
+	},
+	{
+		"prefix": "Resonant",
+		"suffix": "of Resonance",
+		"description": "The bearer can spend a bonus action and up to 3 ki points charge this weapon with spiritual energy.This weapon gains a bonus to hit and damage equal to the amount of ki points its charged with for 1 minute."
+	}, {
+		"prefix": "Restrained",
+		"suffix": "of Subjugation",
+		"description": "This weapon only deals non - lethal damage to living targets"
+	}, {
+		"prefix": "Runic",
+		"suffix": "of Runes",
+		"description": "Whenever bearer casts a spell,treat this weapon as a + 1 weapon until the beginning of their next turn."
+	}, {
+		"prefix": "Siege",
+		"suffix": "of Sieges",
+		"description": "This weapon does maximum damage against man - made, inanimate objects."
+	}, {
+		"prefix": "Shielding",
+		"suffix": "of Shielding",
+		"description": "This item contains 1 d6 non - rechargable uses of the Shield spell."
+	}, {
+		"prefix": "Smoldering",
+		"suffix": "of Flame",
+		"description": "The bearer can add 1 d6 Fire damage to an attack made with this weapon."
+	}, {
+		"prefix": "Smuggler's",
+		"suffix": "of Smuggling",
+		"description": "This weapon contains a small, secret compartment. A character must succeed on a DC15  Perception (Wisdom) check to reveal the compartment when searching the bearer."
+	}, {
+		"prefix": "Sojourner's",
+		"suffix": "of the Sojourner",
+		"description": "A poem, story, or map that describes a long-forgotten treasure that will make this weapon more powerful is etched on the surface of the weapon."
+	}, {
+		"prefix": "Solemn",
+		"suffix": "of Solemnity",
+		"description": "The bearer may spend an action to automatically stabilize a dying creature within 10 feet. They cannot do so again until they have completed a long rest."
+	}, {
+		"prefix": "Spring",
+		"suffix": "of Spring Rain",
+		"description": "The weapon contains a reservoir of healing magic that can a create a fountain of healing water for up to 30 seconds.  The bearer may use a bonus action to plant the ground and call forth the water. While active, creatures within 10 feet of where the weapon is planted regain 1d6 hp.  A long rest restores 1d4 seconds of energy to the weapon's reservoir."
+	}, {
+		"prefix": "Striding",
+		"suffix": "of Strides",
+		"description": "Contains 1d6 non-rechargable uses of the Longstrider spell."
+	}, {
+		"prefix": "Transient",
+		"suffix": "of the Breaking Seal",
+		"description": "Over the course of a long rest, the bearer may transfer the other magic properties of this weapon to a melee weapon of their choosing.  This weapon then loses those properties. There is a chance that the transfer may fail, and this chance increases each time a transfer is undertaken."
+	}, {
+		"prefix": "Tsunami",
+		"suffix": "of Crashing Waves",
+		"description": "Once per short rest, when the bearer crits with this weapon, all creatures other than the bearer within 5 feet of the target (including the target) must roll a DC13 constitution saving throw or be knocked prone by a wave of concussive force."
+	}, {
+		"prefix": "Twilight's",
+		"suffix": "of the Setting Sun",
+		"description": "Once per long rest, when you strike with this weapon, you can choose to cast Hex on the target.Roll a d6 to determine which of the target's attributes is weakened.The bearer cannot transfer the curse to another creature."
+	}, {
+		"prefix": "Voidstone",
+		"suffix": "of the Void",
+		"description": "This weapon cannot be detected by the 'Detect Magic' spell unless the caster touches the weapon."
+	}, {
+		"prefix": "War Leader's",
+		"suffix": "of the War Leader",
+		"description": "The bearer can use a bonus action to amplify their voice three times louder than normal."
+	}, {
+		"prefix": "Winged",
+		"suffix": "of Wings",
+		"description": "Once per long rest, the bearer may use an action to transform this weapon into a magical raven that can deliver a message to anyone in a 3 mile radius, provided the bearer knows their name and face.When the raven returns, it reverts into its weapon form.If the bird should die en route, it reverts into weapon form and unattunes from the bearer."
+	}
+]
