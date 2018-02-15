@@ -1,0 +1,94 @@
+[
+		{
+			"option": "home",
+			"probability": 0.5
+		},
+		{
+			"option": "home of a family friend",
+			"probability": 0.05
+		},
+		{
+			"option": "home of a healer or midwife",
+			"probability": 0.08
+		},
+		{
+			"option": "carriage, cart or wagon",
+			"probability": 0.02
+		},
+		{
+			"option": "barn, shed, or other outbuilding",
+			"probability": 0.03
+		},
+		{
+			"option": "cave",
+			"probability": 0.02
+		},
+		{
+			"option": "field",
+			"probability": 0.02
+		},
+		{
+			"option": "forest",
+			"probability": 0.02
+		},
+		{
+			"option": "temple",
+			"probability": 0.03
+		},
+		{
+			"option": "battlefield",
+			"probability": 0.01
+		},
+		{
+			"option": "alley or street",
+			"probability": 0.02
+		},
+		{
+			"option": "brothel, tavern or inn",
+			"probability": 0.02
+		},
+		{
+			"option": "castle, keep, tower",
+			"probability": 0.02
+		},
+		{
+			"option": "sewer of rubbish heap",
+			"probability": 0.02
+		},
+		{
+			"option": "among people of a different race",
+			"probability": 0.02
+		},
+		{
+			"option": "on board a boat or a ship",
+			"probability": 0.03
+		},
+		{
+			"option": "a prison or in the headquarters of a secret organization",
+			"probability": 0.02
+		},
+		{
+			"option": "a sage's laboratory",
+			"probability": 0.02
+		},
+		{
+			"option": "the Feywild",
+			"probability": 0.01
+		},
+		{
+			"option": "the Shadowfell",
+			"probability": 0.01
+		},
+		{
+			"option": "the Astral Plane or the Ethereal Plane",
+			"probability": 0.01
+		},
+		{
+			"option": "an Inner Plane of your choice",
+			"probability": 0.01
+		},
+		{
+			"option": "an Outer Plane of your choice",
+			"probability": 0.01
+		}
+]
