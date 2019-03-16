@@ -20,3 +20,4 @@ Still really rough overall, currently not in development.
 
 ## Old Character Creator
 Old implementation of the character creator and other assorted files.
+Will not be updated further
